@@ -1,1 +1,1 @@
-instgram clone usning reacts js and firbase by kmv and faizee 
+Instgram clone using reacts js and firbase by kmv and faizee 

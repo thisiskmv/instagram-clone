@@ -1,38 +1,60 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+body{
+  background-color: black;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.App {
+  text-align: center;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.home-child-container{
+  display: flex;
+  /* height: 100vh; */
+  border: 1px solid yellow;
+}
+
+
+#left-container{
+  width: 18%;
+  border: 1px solid grey;
+}
+
+#left-container > div:first-child{
+  border: 1px solid green;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#left-container > div:first-child img{
+  width: 60%;
+  mix-blend-mode: hard-light;
+}
+
+.left-sidebar-options{
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+
+
+.left-sidebar-options > div{
+  display: flex;
+  align-items: center;
+  /* margin-left: 5px; */
+  /* justify-content: flex-start; */
+  margin-top: 1rem;
+}
+
+.left-sidebar-options div h3{
+  /* border: 1px solid white; */
+  margin: 0.7rem;
+  margin-left: 0;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: rgb(255, 255, 255);
+}
+
+.left-sidebar-options div:hover{
+  background-color: rgb(38,38,38);
+  border-radius: 1.5rem;
 }
