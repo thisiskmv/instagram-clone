@@ -2,14 +2,14 @@ import React from 'react';
 
 function RightSidebar(props) {
     let array=[
-        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"pankaj Bhadwa bsdiwala"},
-        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"pankaj Bhadwa bsdiwala"},
-        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"pankaj Bhadwa bsdiwala"},
-        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"pankaj Bhadwa bsdiwala"},
-        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"pankaj Bhadwa bsdiwala"},
-        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"pankaj Bhadwa bsdiwala"},
-        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"pankaj Bhadwa bsdiwala"},
-        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"pankaj Bhadwa bsdiwala"}
+        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"User"},
+        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"User"},
+        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"User"},
+        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"User"},
+        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"User"},
+        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"User"},
+        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"User"},
+        {image:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",name:"User"}
     ]
     return (
         <div className='right-sidebar' >
