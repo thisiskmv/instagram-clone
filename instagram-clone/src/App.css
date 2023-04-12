@@ -41,13 +41,10 @@ body{
 .left-sidebar-options > div{
   display: flex;
   align-items: center;
-  /* margin-left: 5px; */
-  /* justify-content: flex-start; */
   margin-top: 1rem;
 }
 
 .left-sidebar-options div h3{
-  /* border: 1px solid white; */
   margin: 0.7rem;
   margin-left: 0;
   font-weight: 400;
@@ -59,8 +56,129 @@ body{
   background-color: rgb(38,38,38);
   border-radius: 1.5rem;
 }
+
 .chat {
   border:1px solid coral;
   width:58%;
+}
+
+.chat > .userInfo{
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid skyblue;
+  padding: 1rem 1.7rem;
+}
+
+.chat > .userInfo > .chatIcons{
+  display: flex;
+  justify-content: right;
+}
+
+.messages{
+  /* background-color: darkblue; */
+  padding: 1rem;
+  height: calc(100% - 10.1rem);
+  /* overflow: scroll; */
+}
+
+.message{
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+
+.messageInfo{
+  display: flex;
+  flex-direction: column;
+  color: grey;
+  font-weight: 300;
+}
+
+.messageInfo > img{
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.messageContent{
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: end;
+}
+
+.messageContent > p{
+  /* background-color: rgb(38,38,38); */
+  background-color: transparent;
+  padding: 0.8rem 1rem;
+  border-radius: 5rem;
+  border: 1px solid rgba(117, 114, 114, 0.842);
+}
+
+.owner{
+  flex-direction: row-reverse;
+}
+
+.owner p{
+  background-color: rgb(38,38,38);
+  color: white;
+  border: none;
+  max-width: max-content;
+}
+
+
+.inputdiv{
+  background-color: black;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.input{
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(117, 114, 114, 0.842);
+  border-radius: 1.8rem;
+}
+
+.input  input[type="text"]{
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  font-size: 1rem;
+}
+
+.send{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.send  button{
+  background-color: transparent;
+  border: none;
+  color: rgb(54,98,216);
+  cursor: pointer;
+  font-size: 1rem;
+}
+.send  button:hover{
+  color: white;
+  font-weight: 450;
+}
+
+
+.right-sidebar{
+  border:1px solid red;
+  width:24%;
 }
 
