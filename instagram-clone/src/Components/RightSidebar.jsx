@@ -20,7 +20,7 @@ function RightSidebar(props) {
                 return <div style={{display:"flex",marginTop:"20px",gap:"20px"}}>
                     <img style={{borderRadius:"50%",width:"50px",height:"50px",marginLeft:"40px"}} src={elm.image} alt="" />
                     <div style={{marginTop:"-15px"}}>
-                    <p>{elm.name}</p>
+                    <p style={{marginLeft:"-110px"}}>{elm.name}</p>
                     <p style={{color:"grey",marginTop:"-15px"}}>you sent a messeage</p>
                     </div>
                 </div>
