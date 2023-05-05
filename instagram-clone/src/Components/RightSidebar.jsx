@@ -27,10 +27,6 @@ import { HStack, Icon, TabList, TabPanel, TabPanels, Tabs, Text, VStack, Tab, Ta
 //     );
 // }
 
-
-
-
-
 function RightSidebar() {
 
     return (
