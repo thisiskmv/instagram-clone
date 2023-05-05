@@ -1,10 +1,7 @@
-body{
+
+.App{
   background-color: black;
   color: white;
-}
-.App {
-  text-align: center;
-  
 }
 
 
@@ -14,48 +11,6 @@ body{
   border: 1px solid yellow;
 }
 
-
-#left-container{
-  width: 18%;
-  border: 1px solid grey;
-}
-
-#left-container > div:first-child{
-  border: 1px solid green;
-  display: flex;
-  justify-content: flex-start;
-}
-
-#left-container > div:first-child img{
-  width: 60%;
-  mix-blend-mode: hard-light;
-}
-
-.left-sidebar-options{
-  display: flex;
-  flex-direction: column;
-  padding: 0 1rem;
-}
-
-
-.left-sidebar-options > div{
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;
-}
-
-.left-sidebar-options div h3{
-  margin: 0.7rem;
-  margin-left: 0;
-  font-weight: 400;
-  font-size: 1.1rem;
-  color: rgb(255, 255, 255);
-}
-
-.left-sidebar-options div:hover{
-  background-color: rgb(38,38,38);
-  border-radius: 1.5rem;
-}
 
 .chat {
   border:1px solid coral;
@@ -75,20 +30,21 @@ body{
 }
 
 .messages{
-  /* background-color: darkblue; */
   padding: 1rem;
   height: calc(100% - 10.1rem);
-  /* overflow: scroll; */
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .message{
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 0.6rem;
+  margin-bottom: 0.7rem;
+  /* border: 1px solid blue; */
 }
 
-
 .messageInfo{
+  /* border: 1px solid green; */
   display: flex;
   flex-direction: column;
   color: grey;
@@ -100,22 +56,28 @@ body{
   height: 2rem;
   border-radius: 50%;
   object-fit: cover;
-}
+  margin-top: 0.3rem;
+} 
 
 .messageContent{
   max-width: 80%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  align-items: end;
+  align-items: flex-end;
+  gap: 0.8rem;
+  /* border: 1px solid red; */
+  font-size: 0.8rem;
 }
 
 .messageContent > p{
-  /* background-color: rgb(38,38,38); */
   background-color: transparent;
   padding: 0.8rem 1rem;
   border-radius: 5rem;
   border: 1px solid rgba(117, 114, 114, 0.842);
+}
+
+.messageContent > img{
+  width: 20rem;
 }
 
 .owner{
