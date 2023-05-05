@@ -5,6 +5,13 @@ import { HStack, Icon, TabList, TabPanel, TabPanels, Tabs, Text, VStack, Tab, Ta
 
 function RightSidebar() {
 
+
+
+
+
+
+
+    
     return (
         <>
             <Box w='24%' h='95vh' borderBottom='0.1px solid rgba(190, 190, 190, 0.40)'>
