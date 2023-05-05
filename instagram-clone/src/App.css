@@ -15,6 +15,7 @@
 .chat {
   border:1px solid coral;
   width:58%;
+  margin: 60px;
 }
 
 .chat > .userInfo{
