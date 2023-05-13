@@ -1,0 +1,20 @@
+.divider-login:before{
+    content: "";
+    width: 13rem;
+    height: 2px;
+    display: block;
+    background: rgba(128, 128, 128, 0.445);
+    position: absolute;
+    top: 28.9rem;
+    left: 37rem;
+}
+.divider-login:after{
+    content: "";
+    width: 13rem;
+    height: 2px;
+    display: block;
+    background: rgba(128, 128, 128, 0.445);
+    position: absolute;
+    top: 28.9rem;
+    right: 37rem;
+}

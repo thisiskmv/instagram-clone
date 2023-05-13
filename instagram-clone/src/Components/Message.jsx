@@ -1,50 +1,60 @@
-import React from 'react';
-// import { Box, HStack, Image, Text, VStack ,Stack, Avatar, Spacer } from '@chakra-ui/react';
+import React, { useContext, useEffect, useRef, useState } from "react";
+import {
+  Box,
+  HStack,
+  Image,
+  Text,
+  VStack,
+  Stack,
+  Avatar,
+  Spacer,
+} from "@chakra-ui/react";
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "../firebase/firebase";
+import { AuthContext } from "../context/AuthContext";
+import { ChatContext } from "../context/ChatContext";
+function Message({ messages }) {
+  const { currentUser } = useContext(AuthContext);
+  const { data } = useContext(ChatContext);
+  const [just, setJust] = useState(0);
+  const ref = useRef();
+  useEffect(() => {
+    ref.current?.scrollIntoView({
+      behaviour: "smooth",
+    });
+  }, [messages]);
+  console.log("meaashahe", messages);
 
-function Message(props) {
-    return (
-        <div className='message owner'>
-            <div className="messageInfo">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="profile" />
-                {/* <span>Just Now</span> */}
-            </div>
-            <div className="messageContent">
-                <p>Hello...</p>
-                {/* <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="2ndperson" /> */}
-            </div>
-        </div>
-    );
+  useEffect(() => {
+    setInterval(() => {
+      setJust((prev) => prev + 1);
+    }, 60000);
+  }, []);
+  return (
+    <div
+      ref={ref}
+      className={`message  ${
+        messages.senderId === currentUser.uid && "owner"
+      } `}
+    >
+      <div className="messageInfo">
+        <img
+          src={
+            messages.senderId === currentUser.uid
+              ? currentUser.photoURL
+              : data.user.photoURL
+          }
+          alt="profile"
+        />
+        {/* <span>{messages.date.seconds}</span> */}
+        <span>{just === 0 ? "Just Now" : just + "m ago"}</span>
+      </div>
+      <div className="messageContent">
+        <p>{messages.text}</p>
+        {messages.img && <img src={messages.img} alt="" />}
+      </div>
+    </div>
+  );
 }
-
-// function Message(){
-    
-//     return (
-//         <HStack gap='0.5rem' mb='0.5rem' direction='row-reverse' border='1px solid blue' className='owner'>
-//             <VStack fontWeight='300' border='1px solid green'>
-//                 <Image 
-//                 boxSize='2rem'
-//                 borderRadius='5rem'
-//                 src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png' 
-//                 alt='profile' />
-//                 {/* <Text as='span' fontSize='0.8rem'>just now</Text> */}
-//             </VStack>
-//             <VStack  maxWidth='80%' direction='column' gap='1.5rem' border='1px solid red'>
-
-//                     <Text fontSize='0.8rem' bg='transparent' border='1px solid rgba(117, 114, 114, 0.842)' borderRadius='5rem' p='0.8rem 1rem' className='para' >Hello...</Text>
-                
-
-//                 {/* <Spacer/> */}
-
-               
-//                     <Image 
-//                     flexDirection='start'
-//                     boxSize='5rem'
-//                     src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png' 
-//                     alt='secondPerson' />
-               
-//             </VStack>
-//         </HStack>
-//     )
-// }
 
 export default Message;
