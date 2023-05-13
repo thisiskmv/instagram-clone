@@ -1,64 +1,206 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  updateDoc,
+  serverTimestamp,
+  setDoc,
+  doc,
+  getDoc,
+  onSnapshot,
+} from "firebase/firestore";
+import { db } from "../firebase/firebase";
+import { IoIosArrowDown } from "react-icons/io";
 
-import { IoIosArrowDown } from 'react-icons/io'
-import { HStack, Icon, TabList, TabPanel, TabPanels, Tabs, Text, VStack, Tab, TabIndicator, Box, Avatar, Flex, Center } from '@chakra-ui/react';
-
+import {
+  HStack,
+  Icon,
+  TabList,
+  TabPanel,
+  Input,
+  TabPanels,
+  Tabs,
+  Text,
+  VStack,
+  Tab,
+  TabIndicator,
+  Box,
+  Avatar,
+  Flex,
+  Center,
+} from "@chakra-ui/react";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
+import { ChatContext } from "../context/ChatContext";
 function RightSidebar() {
+  const { currentUser } = useContext(AuthContext);
+  const { dispatch } = useContext(ChatContext);
+  const [username, setUserName] = useState("");
+  const [user, setUser] = useState(null);
+  const [err, setErr] = useState(false);
+  const [chats, setChats] = useState([]);
 
-    return (
-        <>
-            <Box w='24%' h='95vh' borderBottom='0.1px solid rgba(190, 190, 190, 0.40)'>
-                <Center cursor='pointer' height='3.5rem'>
-                    <Text color='white'>username</Text>
-                    <Icon as={IoIosArrowDown} fontSize='1.5rem' />
-                </Center>
-                <HStack borderTop='0.1px solid rgba(190, 190, 190, 0.40)' w='100%'>
-                    <Tabs align='start' variant="unstyled" w='100%'>
-                        <TabList>
-                            <Tab p='0.7rem' bg='transparent' color='white' fontSize='0.8rem'>PRIMARY</Tab>
-                            <Tab p='0.7rem' bg='transparent' color='white' fontSize='0.8rem'>GENERAL</Tab>
-                        </TabList>
-                        <TabIndicator
-                            mt="-1.5px"
-                            height="1px"
-                            bg="gray.200"
-                            borderRadius="1px"
-                        />
-                        <TabPanels>
-                            <TabPanel p='0' w='100%'>
-
-                                <Box borderTop='0.1px solid rgba(190, 190, 190, 0.40)'>
-                                    <HStack spacing={3} p='0.4rem 1rem' cursor='pointer' _hover={{ bg: "rgb(38,38,38)" }}>
-                                        <Box>
-                                            <Avatar size='lg' src='https://images.unsplash.com/photo-1457449940276-e8deed18bfff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' />
-                                        </Box>
-                                        <Box>
-                                            <Text mb={-0.5}>username</Text>
-                                            <Text fontSize={13}>Sent you a message</Text>
-                                        </Box>
-                                    </HStack>
-                                    <HStack spacing={3} p='0.4rem 1rem' cursor='pointer' _hover={{ bg: "rgb(38,38,38)" }}>
-                                        <Box>
-                                            <Avatar size='lg' src='https://images.unsplash.com/photo-1457449940276-e8deed18bfff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' />
-                                        </Box>
-                                        <Box>
-                                            <Text mb={-0.5}>username</Text>
-                                            <Text fontSize={13}>Sent you a message</Text>
-                                        </Box>
-                                    </HStack>
-                                </Box>
-                            </TabPanel>
-                            <TabPanel>
-                                <p>Private Chat</p>
-                            </TabPanel>
-                        </TabPanels>
-                    </Tabs>
-                </HStack>
-
-            </Box>
-
-        </>
-    )
-
+  const handleSearch = async () => {
+    const q = query(
+      collection(db, "users"),
+      where("displayName", "==", username)
+    );
+    try {
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        setUser(doc.data());
+      });
+    } catch (error) {
+      setErr(true);
     }
-    export default RightSidebar;
+  };
+
+  const handleKey = (e) => {
+    e.code === "Enter" && handleSearch();
+  };
+  const handleSelect = async () => {
+    const combinedId =
+      currentUser.uid > user.uid
+        ? currentUser.uid + user.uid
+        : user.uid + currentUser.uid;
+
+    try {
+      const res = await getDoc(doc(db, "chats", combinedId));
+
+      if (!res.exists()) {
+        await setDoc(doc(db, "chats", combinedId), { messages: [] });
+
+        // create user chats
+        await updateDoc(doc(db, "userChats", currentUser.uid), {
+          [combinedId + ".userInfo"]: {
+            uid: user.uid,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+          },
+          [combinedId + ".date"]: serverTimestamp(),
+        });
+        await updateDoc(doc(db, "userChats", user.uid), {
+          [combinedId + ".userInfo"]: {
+            uid: currentUser.uid,
+            displayName: currentUser.displayName,
+            photoURL: currentUser.photoURL,
+          },
+          [combinedId + ".date"]: serverTimestamp(),
+        });
+      }
+    } catch (error) {}
+    setUser(null);
+    setUserName("");
+  };
+
+  useEffect(() => {
+    const getChats = () => {
+      const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
+        setChats(doc.data());
+      });
+
+      return () => {
+        unsub();
+      };
+    };
+    currentUser.uid && getChats();
+  }, [currentUser.uid]);
+
+  const chatSelect = (u) => {
+    dispatch({ type: "CHANGE_USER", payload: u });
+  };
+
+  return (
+    <>
+      <Box
+        w="24%"
+        h="95vh"
+        borderBottom="0.1px solid rgba(190, 190, 190, 0.40)"
+      >
+        <Center cursor="pointer" height="3.5rem">
+          <Text color="white">{currentUser.displayName}</Text>
+          <Icon as={IoIosArrowDown} fontSize="1.5rem" />
+        </Center>
+        <Input
+          placeholder="search user"
+          value={username}
+          onKeyDown={handleKey}
+          onChange={(e) => setUserName(e.target.value)}
+        />
+        <HStack borderTop="0.1px solid rgba(190, 190, 190, 0.40)" w="100%">
+          <Tabs align="start" variant="unstyled" w="100%">
+            <TabList>
+              <Tab p="0.7rem" bg="transparent" color="white" fontSize="0.8rem">
+                PRIMARY
+              </Tab>
+              <Tab p="0.7rem" bg="transparent" color="white" fontSize="0.8rem">
+                GENERAL
+              </Tab>
+            </TabList>
+            <TabIndicator
+              mt="-1.5px"
+              height="1px"
+              bg="gray.200"
+              borderRadius="1px"
+            />
+            <TabPanels>
+              <TabPanel p="0" w="100%">
+                <Box borderTop="0.1px solid rgba(190, 190, 190, 0.40)">
+                  {user == "" && <span>User not found!</span>}
+
+                  {user && (
+                    <HStack
+                      spacing={3}
+                      p="0.4rem 1rem"
+                      cursor="pointer"
+                      _hover={{ bg: "rgb(38,38,38)" }}
+                      onClick={handleSelect}
+                    >
+                      <Box>
+                        <Avatar size="lg" src={user.photoURL} />
+                      </Box>
+                      <Box>
+                        <Text mb={-0.5}>{user.displayName}</Text>
+                        <Text fontSize={13}>Sent you a message</Text>
+                      </Box>
+                    </HStack>
+                  )}
+                </Box>
+
+                <Box borderTop="0.1px solid rgba(190, 190, 190, 0.40)">
+                  {Object.entries(chats)
+                    ?.sort((a, b) => b[1].date - a[1].date)
+                    .map((chat) => (
+                      <HStack
+                        key={chat[0]}
+                        spacing={3}
+                        p="0.4rem 1rem"
+                        cursor="pointer"
+                        _hover={{ bg: "rgb(38,38,38)" }}
+                        onClick={() => chatSelect(chat[1].userInfo)}
+                      >
+                        <Box>
+                          <Avatar size="lg" src={chat[1].userInfo.photoURL} />
+                        </Box>
+
+                        <Box>
+                          <Text mb={-0.5}>{chat[1].userInfo.displayName}</Text>
+                          <Text fontSize={13}>{chat[1].lastMessage?.text}</Text>
+                        </Box>
+                      </HStack>
+                    ))}
+                </Box>
+              </TabPanel>
+              <TabPanel>
+                <p>Private Chat</p>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </HStack>
+      </Box>
+    </>
+  );
+}
+export default RightSidebar;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {MdOutlineCall} from 'react-icons/md';
 import {AiOutlineVideoCamera} from 'react-icons/ai';
 import {RxInfoCircled} from 'react-icons/rx';
@@ -6,25 +6,14 @@ import Messages from './Messages';
 import Input from './Input';
 import { Box, Stack, Text, Image, Spacer, HStack, Icon, Avatar } from '@chakra-ui/react';
 
-// function Chat(props) {
-//     return (
-//         <div className="chat">
-//             <div className="userInfo">
-//                 <span>User</span>
-//                 <div className="chatIcons">
-//                     <MdOutlineCall style={{padding:"0 0rem",fontSize:"1.7rem"}} />
-//                     <AiOutlineVideoCamera style={{padding:"0 1.2rem",fontSize:"1.7rem"}} />
-//                     <RxInfoCircled style={{padding:"0 0rem",fontSize:"1.7rem"}} />
-//                 </div>
-//             </div>
-//             <Messages />
-//             <Input />
-//         </div>
-//     );
-// }
+import { ChatContext } from '../context/ChatContext';
+
+ 
+
 
 function Chat(){
-
+    const{data}=useContext(ChatContext)
+console.log("hiii",data)
     return (
         <>
             <Stack w='58%' border='0.1px solid rgba(190, 190, 190, 0.40)' height='95vh'>
@@ -32,9 +21,9 @@ function Chat(){
                     <Box display='flex' alignItems='center' gap={3}>
                         <Avatar 
                         size='xs'
-                        src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png'
+                        src={data.user?.photoURL}
                          />
-                        <Text as='span'>username</Text>
+                        <Text as='span'>{data.user?.displayName}</Text>
                     </Box>
                     <Spacer/>
                     <HStack spacing={15}>

@@ -1,6 +1,6 @@
 
 .App{
-  background-color: black;
+  /* background-color: black; */
   color: white;
 }
 
@@ -79,10 +79,14 @@
 
 .messageContent > img{
   width: 20rem;
+
 }
 
 .owner{
   flex-direction: row-reverse;
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 0.7rem;
 }
 
 .owner p{

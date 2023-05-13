@@ -4,7 +4,7 @@ import Chat from './Chat';
 import RightSidebar from './RightSidebar';
 function HomeDummy(props) {
     return (
-        <div id="home-container">
+        <div id="home-container" style={{backgroundColor:"black"}}>
             <div className="home-child-container">
                 <LeftSidebar />
                 <Chat/>

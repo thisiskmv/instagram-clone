@@ -1,0 +1,20 @@
+.divider-signup:before{
+    content: "";
+    width: 13rem;
+    height: 2px;
+    display: block;
+    background: rgba(128, 128, 128, 0.445);
+    position: absolute;
+    top: 27.5%;
+    left: 37rem;
+} 
+.divider-signup:after{
+    content: "";
+    width: 13rem;
+    height: 2px;
+    display: block;
+    background: rgba(128, 128, 128, 0.418);
+    position: absolute;
+    top: 27.5%;
+    right: 37rem;
+} 
