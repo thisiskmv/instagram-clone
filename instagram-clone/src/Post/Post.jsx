@@ -7,7 +7,6 @@ import {FiSend} from 'react-icons/fi';
 
 function Post(props) {
 
-    
     return (
         <Box w='58%' border='1px solid green'>
             <Box w='60%' m='auto' border='1px solid coral'>
