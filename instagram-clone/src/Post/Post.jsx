@@ -4,10 +4,13 @@ import {BsThreeDots,BsBookmark} from 'react-icons/bs';
 import {AiOutlineHeart} from 'react-icons/ai'
 import {RiChat3Line} from 'react-icons/ri';
 import {FiSend} from 'react-icons/fi';
-
+import LeftSidebar from '../Components/LeftSidebar';
+import RightSidebar from '../Components/RightSidebar';
 function Post(props) {
 
     return (
+        <Flex bg="black">
+        <LeftSidebar/>
         <Box w='58%' border='1px solid green'>
             <Box w='60%' m='auto' border='1px solid coral'>
                 <Flex p='0.7rem 0.3rem'>
@@ -53,6 +56,8 @@ function Post(props) {
                 </Box>
             </Box>
         </Box>
+        <RightSidebar/>
+        </Flex>
     );
 }
 

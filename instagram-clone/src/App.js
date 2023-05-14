@@ -7,6 +7,8 @@ import { Navigate } from 'react-router-dom';
 import {Routes,Route} from 'react-router-dom'
 import { AuthContext } from './context/AuthContext';
 import Search from './Components/Search';
+import LeftSidebar from './Components/LeftSidebar';
+import Post from './Post/Post';
 
 function App() {
   const {currentUser}=useContext(AuthContext)
@@ -20,9 +22,9 @@ function App() {
   }
   return (
     <div className="App">
-  
       <Routes>
-        <Route path='/' element={<PrivateRoute><HomeDummy/></PrivateRoute>}/>
+        <Route path='/' element={<PrivateRoute><Post/></PrivateRoute>}/>
+        <Route path="/homedumy" element={<HomeDummy/>} />
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/search' element={<Search/>}/>
