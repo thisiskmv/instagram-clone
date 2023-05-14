@@ -71,6 +71,7 @@ function Signup(props) {
                 type="email"
                 name="email"
                 fontSize={"0.8rem"}
+                color='black'
                 placeholder="Phone number, username or email"
                 onChange={hendleChange}
               />
