@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 
 function LeftSidebar(){
     const {currentUser} =useContext(AuthContext)
-    console.log(currentUser.photoURL        )
+    // console.log(currentUser.photoURL        )
     return (
         <>
             <Stack w="18%" h='100vh' direction='column'>
