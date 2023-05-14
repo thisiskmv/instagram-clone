@@ -31,9 +31,8 @@ console.log("hiii",data)
                         <Icon as={AiOutlineVideoCamera} boxSize='1.6rem' />
                         <Icon as={RxInfoCircled} boxSize='1.6rem' />
                     </HStack>
-                </Box>
-
-                <Messages/>
+                    </Box>
+                 <Messages/>
                 <Input/>
             </Stack>
         </>
