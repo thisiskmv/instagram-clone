@@ -30,11 +30,13 @@ function LeftSidebar(){
                     alt='logo' />
                 </Flex>
                 <VStack p='0 0.8rem'>
-                    <Button leftIcon={<Icon as={AiFillHome} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'>Home</Button>
+                    <Button leftIcon={<Icon as={AiFillHome} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'><Link to="/">Home</Link></Button>
                     <Button leftIcon={<Icon as={FaSistrix} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'>Search</Button>
                     <Button leftIcon={<Icon as={MdOutlineExplore} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'>Explore</Button>
+                    
                     <Button leftIcon={<Icon as={BiMoviePlay} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'>Reels</Button>
-                    <Button leftIcon={<Icon as={RiMessengerLine} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'>Messages</Button>
+                    
+                   <Button leftIcon={<Icon as={RiMessengerLine} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'><Link to="/homedumy"> Messages</Link></Button>
                     <Button leftIcon={<Icon as={FiHeart} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'>Notifications</Button>
                     <Button leftIcon={<Icon as={TbSquareRoundedPlus} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'>Create</Button>
                     <Button leftIcon={<Avatar src={currentUser.photoURL} size='xs' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'>Profile</Button>
