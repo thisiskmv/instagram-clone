@@ -179,7 +179,7 @@ function RightSidebar() {
                         p="0.4rem 1rem"
                         cursor="pointer"
                         _hover={{ bg: "rgb(38,38,38)" }}
-                        onClick={() => chatSelect(chat[1].userInfo)}
+                        onClick={() => chatSelect(chat[1].userInfo) }
                       >
                         <Box>
                           <Avatar size="lg" src={chat[1].userInfo.photoURL} />
