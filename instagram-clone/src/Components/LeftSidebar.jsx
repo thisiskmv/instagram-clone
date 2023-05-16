@@ -19,7 +19,7 @@ function LeftSidebar(){
 
     // console.log(currentUser.photoURL        )
 
-    console.log("faizan bhadwa",currentUser)
+    // console.log(currentUser)
 
     return (
         <>
