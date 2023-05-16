@@ -46,6 +46,7 @@ function Message({ messages }) {
           }
           alt="profile"
         />
+        {console.log("time",messages.date.seconds)}
         {/* <span>{messages.date.seconds}</span> */}
         <span>{just === 0 ? "Just Now" : just + "m ago"}</span>
       </div>
