@@ -73,8 +73,9 @@ function Input(props) {
                 <input type="text" value={text} placeholder='Message...'  onChange={(e)=>{setText(e.target.value)}} />
                 <div className="send">
                     <TbPhoto style={{fontSize:"2rem", cursor:"pointer"}} />
-                    <input type="file" style={{display:"none"}} id='file'  onChange={(e)=>{setImg(e.target.files[0])}}/>
-                    <lable htmlFor="file">
+                    
+                    <input type="file" style={{display:"none"}} id='fileimg'  onChange={(e)=>{setImg(e.target.files[0])}}/>
+                    <lable for="fileimg">
                     <FiHeart style={{fontSize:"1.8rem",cursor:"pointer"}}  />
                     </lable>
                     <button onClick={handleSend}>Send</button>
