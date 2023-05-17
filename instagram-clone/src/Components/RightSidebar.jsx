@@ -126,6 +126,7 @@ function RightSidebar() {
           <Text color="white">{currentUser.displayName}</Text>
           <Icon as={IoIosArrowDown} fontSize="1.5rem" />
         </Center>
+
         <HStack borderTop="0.1px solid rgba(190, 190, 190, 0.40)" w="100%">
           <Tabs align="start" variant="unstyled" w="100%">
             <TabList>
@@ -144,28 +145,7 @@ function RightSidebar() {
             />
             <TabPanels>
               <TabPanel p="0" w="100%">
-                <Box >
-                  {user == "" && <span>User not found!</span>}
-
-                  {user && (
-                    <HStack
-                      spacing={3}
-                      p="0.4rem 1rem"
-                      cursor="pointer"
-                      _hover={{ bg: "rgb(38,38,38)" }}
-                      onClick={handleSelect}
-                    >
-                      <Box>
-                        <Avatar size="lg" src={user.photoURL} />
-                      </Box>
-                      <Box>
-                        <Text mb={-0.5}>{user.displayName}</Text>
-                        <Text fontSize={13}>Sent you a message</Text>
-                      </Box>
-                    </HStack>
-                  )}
-                </Box>
-
+                
                 <Box borderTop="0.1px solid rgba(190, 190, 190, 0.40)">
                   {Object.entries(chats)
                     ?.sort((a, b) => b[1].date - a[1].date)

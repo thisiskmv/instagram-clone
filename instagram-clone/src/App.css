@@ -1,9 +1,8 @@
 
 .App{
-  background-color: gray;
+  background-color: grey;
   color: white;
 }
-
 
 .home-child-container{
   display: flex;

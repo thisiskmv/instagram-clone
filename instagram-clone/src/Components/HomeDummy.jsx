@@ -4,6 +4,8 @@ import Chat from './Chat';
 import RightSidebar from './RightSidebar';
 import Post from '../Post/Post'
 import { Box, Flex } from '@chakra-ui/react';
+
+
 function HomeDummy(props) {
     return (
         <div id="home-container" style={{ backgroundColor: "rgb(18,18,18)", margin: "auto" }}>
@@ -15,6 +17,8 @@ function HomeDummy(props) {
                         <Chat />
                     </Flex>
                 </Box>
+                <RightSidebar/>
+                <Chat/>
             </div>
         </div>
     );

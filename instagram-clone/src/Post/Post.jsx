@@ -1,19 +1,34 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Avatar, Box, Container, Flex, Icon, Text, Spacer, AspectRatio, Image, Input, Heading, IconButton, Button } from '@chakra-ui/react';
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
-import { BsThreeDots, BsBookmark, BsThreeDotsVertical } from 'react-icons/bs';
-import { AiOutlineHeart } from 'react-icons/ai'
-import { RiChat3Line } from 'react-icons/ri';
-import { FiSend } from 'react-icons/fi';
-import LeftSidebar from '../Components/LeftSidebar';
-import RightSidebar from '../Components/RightSidebar';
-import AddPost from './AddPost';
-import { BiChat, BiLike, BiShare } from 'react-icons/bi';
-import { db } from '../firebase/firebase';
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
-import { AuthContext } from '../context/AuthContext';
-
+import React, { useContext, useEffect, useState } from "react";
+import {
+  Avatar,
+  Box,
+  Container,
+  Flex,
+  Icon,
+  Text,
+  Spacer,
+  AspectRatio,
+  Image,
+  Input,
+  Heading,
+  IconButton,
+  Button,
+} from "@chakra-ui/react";
+import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
+import { BsThreeDots, BsBookmark, BsThreeDotsVertical } from "react-icons/bs";
+import { AiOutlineHeart } from "react-icons/ai";
+import { RiChat3Line } from "react-icons/ri";
+import { FiSend } from "react-icons/fi";
+import LeftSidebar from "../Components/LeftSidebar";
+import RightSidebar from "../Components/RightSidebar";
+import AddPost from "./AddPost";
+import { BiChat, BiLike, BiShare } from "react-icons/bi";
+import { db } from "../firebase/firebase";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { AuthContext } from "../context/AuthContext";
+import HomeStaticRightBar  from "../Components/HomeStaticRightBar"
 function Post(props) {
+
     const { currentUser } = useContext(AuthContext);
     console.log(currentUser);
 
@@ -90,7 +105,7 @@ function Post(props) {
                     ))
                 }
             </Box>
-            <RightSidebar />
+            <HomeStaticRightBar />
         </Flex>
     );
 }
