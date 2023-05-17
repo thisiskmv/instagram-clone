@@ -123,12 +123,12 @@ function RightSidebar() {
           <Text color="white">{currentUser.displayName}</Text>
           <Icon as={IoIosArrowDown} fontSize="1.5rem" />
         </Center>
-        <Input
+        {/* <Input
           placeholder="search user"
           value={username}
           onKeyDown={handleKey}
           onChange={(e) => setUserName(e.target.value)}
-        />
+        /> */}
         <HStack borderTop="0.1px solid rgba(190, 190, 190, 0.40)" w="100%">
           <Tabs align="start" variant="unstyled" w="100%">
             <TabList>
@@ -147,7 +147,7 @@ function RightSidebar() {
             />
             <TabPanels>
               <TabPanel p="0" w="100%">
-                <Box borderTop="0.1px solid rgba(190, 190, 190, 0.40)">
+                {/* <Box borderTop="0.1px solid rgba(190, 190, 190, 0.40)">
                   {user == "" && <span>User not found!</span>}
 
                   {user && (
@@ -167,7 +167,7 @@ function RightSidebar() {
                       </Box>
                     </HStack>
                   )}
-                </Box>
+                </Box> */}
 
                 <Box borderTop="0.1px solid rgba(190, 190, 190, 0.40)">
                   {Object.entries(chats)
