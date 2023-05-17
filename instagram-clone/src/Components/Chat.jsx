@@ -22,7 +22,7 @@ function Chat() {
     return (
       <>
         {flag ? (
-          <Stack w='58%' border='0.1px solid rgba(190, 190, 190, 0.40)' height='95vh'>
+          <Stack w='65%' bg='black' border='0.1px solid rgba(190, 190, 190, 0.40)' height='95vh'>
             <Box display='flex' p='0.93rem 2rem' borderBottom='0.1px solid rgba(190, 190, 190, 0.40)'>
               <Box display='flex' alignItems='center' gap={3}>
                 <Avatar size='xs' src={data.user?.photoURL} />
@@ -39,7 +39,7 @@ function Chat() {
             <Input />
           </Stack>
         ) : (
-          <Stack w='58%' border='0.1px solid rgba(190, 190, 190, 0.40)' height='95vh'>
+          <Stack w='65%' bg='black' border='0.1px solid rgba(190, 190, 190, 0.40)' height='95vh'>
             <Center><Heading mt="9rem"><RiTelegramLine color="grey" fontSize={"11rem"} /></Heading></Center>   
             <Center><Heading  color="grey" >Your Messages</Heading></Center>
             <Center><h1  style={{color:"grey"}} >Send private photos and messages to a friend or group.</h1></Center>
