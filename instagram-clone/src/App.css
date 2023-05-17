@@ -1,14 +1,12 @@
 
 .App{
-  /* background-color: black; */
+  background-color: gray;
   color: white;
 }
 
 
 .home-child-container{
   display: flex;
-  /* height: 100vh; */
-  border: 1px solid yellow;
 }
 
 

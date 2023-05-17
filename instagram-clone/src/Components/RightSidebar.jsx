@@ -115,20 +115,17 @@ function RightSidebar() {
   return (
     <>
       <Box
-        w="24%"
+        w="35%"
         h="95vh"
         borderBottom="0.1px solid rgba(190, 190, 190, 0.40)"
+        borderTop="0.1px solid rgba(190, 190, 190, 0.40)"
+        borderLeft="0.1px solid rgba(190, 190, 190, 0.40)"
+        bg='black'
       >
-        <Center cursor="pointer" height="3.5rem">
+        <Center cursor="pointer" height="3.48rem">
           <Text color="white">{currentUser.displayName}</Text>
           <Icon as={IoIosArrowDown} fontSize="1.5rem" />
         </Center>
-        <Input
-          placeholder="search user"
-          value={username}
-          onKeyDown={handleKey}
-          onChange={(e) => setUserName(e.target.value)}
-        />
         <HStack borderTop="0.1px solid rgba(190, 190, 190, 0.40)" w="100%">
           <Tabs align="start" variant="unstyled" w="100%">
             <TabList>
@@ -147,7 +144,7 @@ function RightSidebar() {
             />
             <TabPanels>
               <TabPanel p="0" w="100%">
-                <Box borderTop="0.1px solid rgba(190, 190, 190, 0.40)">
+                <Box >
                   {user == "" && <span>User not found!</span>}
 
                   {user && (
