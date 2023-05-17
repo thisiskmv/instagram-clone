@@ -5,6 +5,7 @@ import HomeDummy from '../Components/HomeDummy';
 import Login from '../Login SIGNUP/Signup';
 import Signup from '../Login SIGNUP/Login';
 import PrivateRoute from '../context/PrivateRoute';
+import Chat from '../Components/Chat';
 function AllRoutes(props) {
     return (     
         <Routes>
@@ -12,6 +13,7 @@ function AllRoutes(props) {
         <Route path="/homedumy" element={<PrivateRoute><HomeDummy/></PrivateRoute>} />
         <Route path='/signup' element={<Login/>}/>
         <Route path='/login' element={<Signup/>}/>
+        <Route path="/chat" element={<PrivateRoute><Chat/></PrivateRoute>}/>
         </Routes>
     );
 }

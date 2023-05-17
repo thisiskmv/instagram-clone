@@ -23,7 +23,7 @@ function LeftSidebar(){
 
     return (
         <>
-            <Stack w="18%" h='100vh' direction='column'>
+            <Stack border="1px solid yellow" w="18%" h='100vh' direction='column'>
                 <Flex height='6rem' >
                     <Image
                     mt='-1rem'
