@@ -27,9 +27,6 @@ function AddPost({ isOpen, onClose }) {
 
     const inputRef = useRef();
 
-    // const handleFileUpload = () => {
-    //     fileInputRef.current.click();
-    // };
 
     const handleChange = (e) => {
         if (e.target.files[0]) {
@@ -92,7 +89,7 @@ function AddPost({ isOpen, onClose }) {
         // </Center>
 
         <>
-            {/* <Button onClick={onOpen}>Trigger modal</Button> */}
+        
 
             <Modal onClose={onClose} isOpen={isOpen} isCentered>
                 <ModalOverlay />
