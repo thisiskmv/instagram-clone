@@ -17,8 +17,7 @@ function HomeDummy(props) {
                         <Chat />
                     </Flex>
                 </Box>
-                <RightSidebar/>
-                <Chat/>
+               
             </div>
         </div>
     );

@@ -104,7 +104,7 @@ function SearchModal({ isOpen, onClose }) {
     } catch (error) {}
     setUser(null);
     setUserName("");
-    
+    onClose()
   };
 
   useEffect(() => {
@@ -151,7 +151,7 @@ function SearchModal({ isOpen, onClose }) {
                   spacing={3}
                   p="0.4rem 1rem"
                   cursor="pointer"
-                 
+                  
                   _hover={{ bg: "rgb(38,38,38)" }}
                   
                   onClick={handleSelect}
