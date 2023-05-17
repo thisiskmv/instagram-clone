@@ -38,6 +38,10 @@ function RightSidebar() {
         <Text mr="0.5rem">See All</Text>
        </Flex>
 
+
+
+
+
        <VStack>
        <Flex alignItems={"center"} justifyContent={"center"}  mt="1.5rem"><Avatar ml="0rem"  mr="0.8rem"  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuJTIwZmFjZXxlbnwwfHwwfHw%3D&w=1000&q=80"/>
        <Text >{currentUser.displayName}</Text>
