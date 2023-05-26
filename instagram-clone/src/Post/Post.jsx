@@ -59,7 +59,7 @@ function Post(props) {
                         <Box w='58%' m='auto' border='1px solid coral' >
                             <Flex p='0.7rem 0.3rem'>
                                 <Flex flex='1' gap='3' alignItems='center' flexWrap='wrap'>
-                                    <Avatar src={currentUser.photoURL} size='sm' name='woman' />
+                                    <Avatar src={post.imageUrl} size='sm' name='woman' />
                                     <Box>
                                         <Heading size='xs'>{post.username}</Heading>
                                         <Text fontSize='xs'>New Delhi</Text>

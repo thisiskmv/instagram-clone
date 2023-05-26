@@ -15,57 +15,153 @@ import {
   Avatar,
   Flex,
   Center,
+  Spacer,
 } from "@chakra-ui/react";
 import { AuthContext } from "../context/AuthContext";
 
 function RightSidebar() {
- const{currentUser} =useContext(AuthContext)
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <>
       <Box
-        w="24%"
-        h="95vh"
+        w="30%"
+        h="100vh"
         borderBottom="0.1px solid rgba(190, 190, 190, 0.40)"
+        mt="3.5rem"
       >
-       <Flex alignItems={"center"} justifyContent={"center"}  mt="3rem"><Avatar ml="0rem" mr="0.8rem"  src={currentUser.photoURL}/>
-       <Text>{currentUser.displayName}</Text>
-       <Text ml="4rem" color="yellow">Switch</Text>
-       </Flex>
+        <Box w="80%" ml="2rem">
+          <HStack>
+            <HStack spacing={4}>
+              <Avatar src={currentUser.photoURL} />
+              <Text>{currentUser.displayName}</Text>
+            </HStack>
+            <Spacer />
+            <Box>
+              <Text fontSize={"0.8rem"} color="blue.400">
+                Switch
+              </Text>
+            </Box>
+          </HStack>
 
-       <Flex justifyContent={"space-between"} mt="1rem" color="grey">
-        <Text ml="0.5rem">Suggest for you</Text>
-        <Text mr="0.5rem">See All</Text>
-       </Flex>
+          <Flex justifyContent={"space-between"} mt="1rem">
+            <Text color="grey " fontSize={"0.8rem"}>
+              Suggested for you
+            </Text>
+            <Text color="white" fontSize={"0.8rem"} fontWeight={"400"}>
+              See All
+            </Text>
+          </Flex>
 
+          <Box mt="1.5rem">
+            <HStack mt="1rem">
+              <Avatar
+                size="sm"
+                src="https://images.pexels.com/photos/4890259/pexels-photo-4890259.jpeg?auto=compress&cs=tinysrgb&w=600"
+              />
 
+              <Box>
+                <Text fontSize={"0.8rem"}>Pankaj partap singh bisht</Text>
+                <Text fontSize={"0.8rem"} color="grey">
+                  Followed by faizan04 + 8 others
+                </Text>
+              </Box>
+              <Spacer />
+              <Box>
+                <Text fontSize={"0.8rem"} color="blue.400">
+                  Follow
+                </Text>
+              </Box>
+            </HStack>
 
+            <HStack mt="1rem">
+              <Avatar
+                size="sm"
+                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuJTIwZmFjZXxlbnwwfHwwfHw%3D&w=1000&q=80"
+              />
 
+              <Box>
+                <Text fontSize={"0.8rem"}>thisiskmv</Text>
+                <Text fontSize={"0.8rem"} color="grey">
+                  Followed by kmv +4 others
+                </Text>
+              </Box>
+              <Spacer />
+              <Box>
+                <Text fontSize={"0.8rem"} color="blue.400">
+                  Follow
+                </Text>
+              </Box>
+            </HStack>
+            <HStack mt="1rem">
+              <Avatar
+                size="sm"
+                src="https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              />
 
-       <VStack>
-       <Flex alignItems={"center"} justifyContent={"center"}  mt="1.5rem"><Avatar ml="0rem"  mr="0.8rem"  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuJTIwZmFjZXxlbnwwfHwwfHw%3D&w=1000&q=80"/>
-       <Text >{currentUser.displayName}</Text>
-       <Text ml="8.2rem" color="yellow">Follow</Text>
-       </Flex>
-       <Flex alignItems={"center"} justifyContent={"center"}  mt="1.5rem"><Avatar ml="0rem"  mr="0.8rem"  src="https://images.unsplash.com/photo-1503443207922-dff7d543fd0e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWVufGVufDB8fDB8fA%3D%3D&w=1000&q=80"/>
-       <Text >PankajSin</Text>
-       <Text ml="8.2rem" color="yellow">Follow</Text>
-       </Flex>
-       <Flex alignItems={"center"} justifyContent={"center"}  mt="2rem"><Avatar ml="0rem"  mr="0.8rem"  src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000"/>
-       <Text >Shubham</Text>
-       <Text ml="8.2rem" color="yellow">Follow</Text>
-       </Flex>
-       <Flex alignItems={"center"} justifyContent={"center"}  mt="2rem"><Avatar ml="0rem"  mr="0.8rem"  src="https://thumbs.dreamstime.com/b/handsome-young-black-man-serious-expression-face-45080832.jpg"/>
-       <Text >RoshanSih</Text>
-       <Text ml="8.2rem" color="yellow">Follow</Text>
-       </Flex>
-       <Flex alignItems={"center"} justifyContent={"center"}  mt="2rem"><Avatar ml="0rem"  mr="0.8rem"  src="https://image.shutterstock.com/image-photo/young-handsome-man-beard-wearing-260nw-1768126784.jpg"/>
-       <Text >Dipansuvr</Text>
-       <Text ml="8.2rem" color="yellow">Follow</Text>
-       </Flex>
-       </VStack>
-       
-        
+              <Box>
+                <Text fontSize={"0.8rem"}>Faizan khan</Text>
+                <Text fontSize={"0.8rem"} color="grey">
+                  Followed by kmv + 9 others
+                </Text>
+              </Box>
+              <Spacer />
+              <Box>
+                <Text fontSize={"0.8rem"} color="blue.400">
+                  Follow
+                </Text>
+              </Box>
+            </HStack>
+            <HStack mt="1rem">
+              <Avatar
+                size="sm"
+                src="https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=600"
+              />
+
+              <Box>
+                <Text fontSize={"0.8rem"}>Roshan ghuu</Text>
+                <Text fontSize={"0.8rem"} color="grey">
+                  Followed by Shubham + 4 others
+                </Text>
+              </Box>
+              <Spacer />
+              <Box>
+                <Text fontSize={"0.8rem"} color="blue.400">
+                  Follow
+                </Text>
+              </Box>
+            </HStack>
+            <HStack mt="1rem">
+              <Avatar
+                size="sm"
+                src="https://images.pexels.com/photos/943235/pexels-photo-943235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              />
+
+              <Box>
+                <Text fontSize={"0.8rem"}>Shubham chaubhay</Text>
+                <Text fontSize={"0.8rem"} color="grey">
+                  Followed by Muskan thapa + 3 others
+                </Text>
+              </Box>
+              <Spacer />
+              <Box>
+                <Text fontSize={"0.8rem"} color="blue.400">
+                  Follow
+                </Text>
+              </Box>
+            </HStack>
+          </Box>
+          <Box>
+            <Text mt="1rem" fontSize={"0.65rem"} color="grey">
+              About.Help.Press.Api.jobs.Privacy.Terms.Location.Language.MetaVarified
+            </Text>
+          </Box>
+          <Box>
+            <Text mt="0.5rem" fontSize={"0.70rem"} color="grey">
+              @ 2023 INSTAGRAM FROM META
+            </Text>
+          </Box>
+        </Box>
       </Box>
     </>
   );
