@@ -4,8 +4,8 @@ import {AiOutlineVideoCamera} from 'react-icons/ai';
 import {RxInfoCircled} from 'react-icons/rx';
 import Messages from './Messages';
 import Input from './Input';
-import { Box, Stack, Text, Image,Heading, Spacer,useDisclosure, HStack, Icon, Avatar ,Center,Button} from '@chakra-ui/react';
-import {RiTelegramLine} from "react-icons/ri"
+import { Box, Stack, Text, Image, Spacer,useDisclosure, HStack, Icon, Avatar ,Center,Button} from '@chakra-ui/react';
+import chatcccon from "../Images/chatcccon.svg"
 import { ChatContext } from '../context/ChatContext';
 import SearchModal from './SearchModal';
 function Chat() {
@@ -39,10 +39,10 @@ function Chat() {
             <Input />
           </Stack>
         ) : (
-          <Stack w='65%' bg='black' border='0.1px solid rgb(54,54,54)' height='95vh'>
-            <Center><Heading mt="9rem"><RiTelegramLine color="grey" fontSize={"11rem"} /></Heading></Center>   
-            <Center><Heading  color="grey" >Your Messages</Heading></Center>
-            <Center><h1  style={{color:"grey"}} >Send private photos and messages to a friend or group.</h1></Center>
+          <Stack w='65%' bg='black' border='0.1px solid rgba(190, 190, 190, 0.40)' height='95vh'>
+            <Center mt="12rem"><Image  src={chatcccon}/></Center>   
+            <Center><Text  fontSize={"1.2rem"}>Your Messages</Text></Center>
+            <Center><Text color="grey" >Send private photos and messages to a friend or group.</Text></Center>
             <Center ><Button onClick={onOpen} mt="1rem" colorScheme='blue'>Send Message</Button></Center>
             <SearchModal isOpen={isOpen} onClose={onClose}/>
           </Stack>

@@ -19,8 +19,8 @@ import {
     ModalBody,
     ModalCloseButton,
 } from '@chakra-ui/react'
-import { Picker } from "react-emoji-picker";
-// import "emoji-mart/css/emoji-mart.css";
+
+
 
 function AddPost({ isOpen, onClose }) {
     const { currentUser } = useContext(AuthContext);
@@ -80,6 +80,7 @@ function AddPost({ isOpen, onClose }) {
                 console.log(currentUser.displayName);
                 if (username) {
                     await addDoc(collection(db, 'posts'), {
+                        userId: currentUser.uid,
                         timestamp: serverTimestamp(),
                         caption: caption,
                         imageUrl: url,
@@ -112,7 +113,6 @@ function AddPost({ isOpen, onClose }) {
     };
 
     return (
-        
         <>
             <Modal onClose={handleModalClose} size='3xl' isOpen={isOpen} isCentered>
                 <ModalOverlay />
