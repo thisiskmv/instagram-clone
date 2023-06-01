@@ -14,6 +14,7 @@ import { AuthContext } from '../context/AuthContext';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AddPost from '../Post/AddPost';
+import instalogo from '../Images/instalogo.svg';
 
 function LeftSidebar(){
     const {currentUser} =useContext(AuthContext)
@@ -21,17 +22,13 @@ function LeftSidebar(){
 
     return (
         <>
-            <Stack w="18%" h='100vh' direction='column' bg='black' border='0.1px solid rgba(190, 190, 190, 0.40)' position='fixed'>
-                <Flex height='6rem' >
+            <Stack w="18%" h='100vh' direction='column' bg='black' borderRight='0.1px solid rgb(54,54,54)' position='fixed'>
+                <Flex height='6rem' p='0 1.3rem' >
                     <Image
-                    mt='-1rem'
-                    boxSize='8rem'
-                    objectFit='contain'
-                    blendMode='hard-light'
-                    src='https://www.logo.wine/a/logo/Instagram/Instagram-Wordmark-White-Dark-Background-Logo.wine.svg' 
+                    src={instalogo} 
                     alt='logo' />
                 </Flex>
-                <VStack p='0 0.8rem'>
+                <VStack p='0 0.8rem' spacing={4}>
                     <Button leftIcon={<Icon as={AiFillHome} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'><Link to="/">Home</Link></Button>
                     <Button leftIcon={<Icon as={FaSistrix} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'>Search</Button>
                     <Button leftIcon={<Icon as={MdOutlineExplore} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'>Explore</Button>                   
@@ -39,9 +36,9 @@ function LeftSidebar(){
                     <Button leftIcon={<Icon as={RiMessengerLine} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'><Link to="/homedumy"> Messages</Link></Button>
                     <Button leftIcon={<Icon as={FiHeart} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'>Notifications</Button>
                     <Button onClick={onOpen} leftIcon={<Icon as={TbSquareRoundedPlus} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'>Create</Button>
-                    <Button leftIcon={<Avatar src={currentUser.photoURL} size='xs' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'>Profile</Button>
+                    <Button leftIcon={<Avatar src={currentUser.photoURL} size='xs' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'><Link to='/profile'>Profile</Link></Button>
                     <Button leftIcon={<Icon as={RxHamburgerMenu} fontSize='1.7rem' mr='0.3rem' />} fontSize='0.9rem' w='100%' justifyContent='flex-start' p='0.5rem' bg='transparent' color='white' border='none' _hover={{bg:"rgb(38,38,38)"}} borderRadius='0.5rem'>More</Button>
-                    <Button onClick={()=>signOut(auth)} style={{background:"white",color:"black"}}>Log Out</Button>
+                    {/* <Button onClick={()=>signOut(auth)} style={{background:"white",color:"black"}}>Log Out</Button> */}
                 </VStack>
                 <AddPost isOpen={isOpen} onClose={onClose}  />
             </Stack>

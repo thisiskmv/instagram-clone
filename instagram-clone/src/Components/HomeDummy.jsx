@@ -19,6 +19,20 @@ function HomeDummy(props) {
                 </Box>
             </div>
         </div>
+
+        // <Flex w='100%' border='1px solid coral'>
+        //     <Box w='20%' borderRight='1px solid coral'>
+        //         <LeftSidebar />
+        //     </Box>
+        //     <Box w='80%'>
+        //         <Flex direction='column' h='100%' border='1px solid yellow'>
+        //             <Box flex='1' overflow='auto'>
+        //                 <RightSidebar />
+        //                 <Chat />
+        //             </Box>
+        //         </Flex>
+        //     </Box>
+        // </Flex>
     );
 }
 
