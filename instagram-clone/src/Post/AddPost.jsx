@@ -113,10 +113,7 @@ function AddPost({ isOpen, onClose }) {
     };
 
     return (
-
         <>
-
-
             <Modal onClose={handleModalClose} size='3xl' isOpen={isOpen} isCentered>
                 <ModalOverlay />
                 <ModalContent bg='rgb(38,38,38)' w='30%' color='white' borderRadius="0.9rem" textAlign='center'>
@@ -186,26 +183,6 @@ function AddPost({ isOpen, onClose }) {
                 </ModalContent>
             </Modal>
 
-
-            {/* <Modal onClose={handleClose} isOpen={showSecondModal} size='3xl' isCentered>
-                <ModalOverlay />
-                <ModalContent bg='rgb(38,38,38)'  color='white' borderRadius="0.9rem" textAlign='center'>
-                    <ModalHeader p='0.4em' borderBottom='0.1px solid rgba(190, 190, 190, 0.40)'>
-                        <Flex justify='space-between' p='0.2rem 0.5rem'>
-                            <Icon as={BsArrowLeft} boxSize='1.7rem' cursor='pointer'  />
-                            <Text textAlign='center' fontSize='0.9rem'>Create new post</Text>
-                            <Text textAlign='right' fontSize='0.9rem' color='blue.300' _hover={{ color: "white" }} cursor='pointer' onClick={handleNext}>Share</Text>
-                        </Flex>
-                    </ModalHeader>
-
-                    <ModalBody>
-                        <Text>Testing</Text>
-                    </ModalBody>
-                    <ModalFooter>
-
-                    </ModalFooter>
-                </ModalContent>
-            </Modal> */}
         </>
     );
 }

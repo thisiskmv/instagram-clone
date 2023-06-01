@@ -25,9 +25,8 @@ function RightSidebar() {
   return (
     <>
       <Box
-        w="30%"
-        h="100vh"
-    
+        w="28%"
+        h="93vh"
         mt="3.5rem"
       >
         <Box w="80%" ml="2rem">

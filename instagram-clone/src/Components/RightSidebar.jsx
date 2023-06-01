@@ -117,9 +117,9 @@ function RightSidebar() {
       <Box
         w="35%"
         h="95vh"
-        borderBottom="0.1px solid rgba(190, 190, 190, 0.40)"
-        borderTop="0.1px solid rgba(190, 190, 190, 0.40)"
-        borderLeft="0.1px solid rgba(190, 190, 190, 0.40)"
+        borderBottom="0.1px solid rgb(54,54,54)"
+        borderTop="0.1px solid rgb(54,54,54)"
+        borderLeft="0.1px solid rgb(54,54,54)"
         bg='black'
       >
         <Center cursor="pointer" height="3.48rem">
@@ -127,7 +127,7 @@ function RightSidebar() {
           <Icon as={IoIosArrowDown} fontSize="1.5rem" />
         </Center>
 
-        <HStack borderTop="0.1px solid rgba(190, 190, 190, 0.40)" w="100%">
+        <HStack borderTop="0.1px solid rgb(54,54,54)" w="100%">
           <Tabs align="start" variant="unstyled" w="100%">
             <TabList>
               <Tab p="0.7rem" bg="transparent" color="white" fontSize="0.8rem">
@@ -146,7 +146,7 @@ function RightSidebar() {
             <TabPanels>
               <TabPanel p="0" w="100%">
                 
-                <Box borderTop="0.1px solid rgba(190, 190, 190, 0.40)">
+                <Box borderTop="0.1px solid rgb(54,54,54)">
                   {Object.entries(chats)
                     ?.sort((a, b) => b[1].date - a[1].date)
                     .map((chat) => (

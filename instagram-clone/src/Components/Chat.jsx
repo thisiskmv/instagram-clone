@@ -22,7 +22,7 @@ function Chat() {
     return (
       <>
         {flag ? (
-          <Stack w='65%' bg='black' border='0.1px solid rgba(190, 190, 190, 0.40)' height='95vh'>
+          <Stack w='65%' bg='black' border='0.1px solid rgb(54,54,54)' height='95vh'>
             <Box display='flex' p='0.93rem 2rem' borderBottom='0.1px solid rgba(190, 190, 190, 0.40)'>
               <Box display='flex' alignItems='center' gap={3}>
                 <Avatar size='xs' src={data.user?.photoURL} />

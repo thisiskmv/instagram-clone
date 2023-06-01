@@ -58,14 +58,17 @@ function Post(props) {
         console.log(id)
       };
     console.log(posts,"heyeyeye")
+  
     return (
-        <Flex bg="black">
-            <LeftSidebar />
-            <Box w='80%' ml='13rem' >
+        <Flex w='100%' bg='black' color='white'>
+            <Box w='20%'>
+                <LeftSidebar />
+            </Box>
+            <Box w='60%' >
                 <AddPost />
                 {
                     posts.map(({ id, post }) => (
-                        <Box w='58%' m='auto' >
+                        <Box w='63%' m='auto' p='1rem 0' borderBottom='0.1px solid rgb(54,54,54)' >
                             <Flex p='0.7rem 0.3rem'>
                                 <Flex flex='1' gap='3' alignItems='center' flexWrap='wrap'>
                                     <Avatar src={post.photoURL} size='sm' name='woman' />
@@ -92,7 +95,7 @@ function Post(props) {
                                     <Icon as={BsThreeDots} onClick={onOpen} boxSize={5} />
                                 </Flex>
                             </Flex>
-                            <AspectRatio ratio={3 / 3.8}  >
+                            <AspectRatio ratio={3 / 3.8}>
                                 <Image src={post.imageUrl} w='100px' borderRadius="5px" objectFit='cover' />
                             </AspectRatio>
 
@@ -127,7 +130,7 @@ function Post(props) {
                     ))
                 }
             </Box>
-            <HomeStaticRightBar />
+                <HomeStaticRightBar />
         </Flex>
     );
 }
