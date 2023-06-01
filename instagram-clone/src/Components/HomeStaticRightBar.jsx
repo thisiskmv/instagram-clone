@@ -27,7 +27,7 @@ function RightSidebar() {
       <Box
         w="30%"
         h="100vh"
-        borderBottom="0.1px solid rgba(190, 190, 190, 0.40)"
+    
         mt="3.5rem"
       >
         <Box w="80%" ml="2rem">

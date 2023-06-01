@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import {
   Avatar,
   Box,
-  Container,
   Flex,
   Icon,
   Text,
@@ -11,24 +10,27 @@ import {
   Image,
   Input,
   Heading,
-  IconButton,
   Button,
+  ModalContent,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure
 } from "@chakra-ui/react";
-import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
-import { BsThreeDots, BsBookmark, BsThreeDotsVertical } from "react-icons/bs";
+import { BsThreeDots, BsBookmark} from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { RiChat3Line } from "react-icons/ri";
 import { FiSend } from "react-icons/fi";
 import LeftSidebar from "../Components/LeftSidebar";
 import RightSidebar from "../Components/RightSidebar";
 import AddPost from "./AddPost";
-import { BiChat, BiLike, BiShare } from "react-icons/bi";
 import { db } from "../firebase/firebase";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query,deleteDoc,doc } from "firebase/firestore";
 import { AuthContext } from "../context/AuthContext";
 import HomeStaticRightBar  from "../Components/HomeStaticRightBar"
 function Post(props) {
-
+ const{isOpen,onOpen,onClose} = useDisclosure()
     const { currentUser } = useContext(AuthContext);
     console.log(currentUser);
 
@@ -49,25 +51,45 @@ function Post(props) {
         };
     }, []);
 
+
+    
+      const deletePost = (id) => {
+        deleteDoc(doc(db, "posts", id));
+        console.log(id)
+      };
+    console.log(posts,"heyeyeye")
     return (
         <Flex bg="black">
             <LeftSidebar />
-            <Box w='80%' ml='13rem' border='1px solid green'>
+            <Box w='80%' ml='13rem' >
                 <AddPost />
                 {
                     posts.map(({ id, post }) => (
-                        <Box w='58%' m='auto' border='1px solid coral' >
+                        <Box w='58%' m='auto' >
                             <Flex p='0.7rem 0.3rem'>
                                 <Flex flex='1' gap='3' alignItems='center' flexWrap='wrap'>
-                                    <Avatar src={post.imageUrl} size='sm' name='woman' />
+                                    <Avatar src={post.photoURL} size='sm' name='woman' />
                                     <Box>
                                         <Heading size='xs'>{post.username}</Heading>
                                         <Text fontSize='xs'>New Delhi</Text>
                                     </Box>
                                 </Flex>
                                 <Spacer />
+                                <Modal  isOpen={isOpen} onClose={onClose}>
+                                    <ModalContent ml="7.5rem" w="10%" borderRadius={"1rem"}>
+                                        <ModalHeader p="0"></ModalHeader>
+                                        <ModalBody p="0">
+                                        {post.userId === currentUser.uid && (                
+                                        <Button onClick={()=>{deletePost(id)}}   _hover={{bg:"red",color:"white"}} w="100%">Delete</Button>  
+                                          )}
+                                        
+                                     
+                                        </ModalBody>
+                                        <ModalFooter  p="0"></ModalFooter>
+                                    </ModalContent>
+                                </Modal>
                                 <Flex align='center'>
-                                    <Icon as={BsThreeDots} boxSize={5} />
+                                    <Icon as={BsThreeDots} onClick={onOpen} boxSize={5} />
                                 </Flex>
                             </Flex>
                             <AspectRatio ratio={3 / 3.8}  >
