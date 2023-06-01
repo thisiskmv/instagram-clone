@@ -19,8 +19,8 @@ import {
     ModalBody,
     ModalCloseButton,
 } from '@chakra-ui/react'
-import { Picker } from "react-emoji-picker";
-// import "emoji-mart/css/emoji-mart.css";
+
+
 
 function AddPost({ isOpen, onClose }) {
     const { currentUser } = useContext(AuthContext);
@@ -80,10 +80,12 @@ function AddPost({ isOpen, onClose }) {
                 console.log(currentUser.displayName);
                 if (username) {
                     await addDoc(collection(db, 'posts'), {
+                        userId: currentUser.uid,
                         timestamp: serverTimestamp(),
                         caption: caption,
                         imageUrl: url,
                         username: username,
+                        photoURL: currentUser?.photoURL === null ? "./user.png" : currentUser?.photoURL,
                     });
                 } else {
                     throw new Error("Invalid username");
@@ -111,15 +113,6 @@ function AddPost({ isOpen, onClose }) {
     };
 
     return (
-        // <Center>
-        //     <Stack w='60%' mb='2rem' >
-        //         <Heading>Add Post</Heading>
-        //         <Input type='file' size='sm' onChange={handleChange} />
-        //         <Input type='text' size='sm' variant='outline' placeholder='Write here Captions' value={caption} onChange={(e)=>{setCaption(e.target.value)}} />
-        //         <Progress size='sm' hasStripe value={progress}  max='100' />
-        //         <Button colorScheme='blue' size='sm' w='100%' onClick={handleUpload}>Add Post</Button>
-        //     </Stack>
-        // </Center>
 
         <>
 
