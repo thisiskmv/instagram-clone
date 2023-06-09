@@ -19,6 +19,7 @@ import {
     ModalBody,
     ModalCloseButton,
 } from '@chakra-ui/react'
+import { Spinner } from '@chakra-ui/react';
 
 
 
@@ -27,16 +28,8 @@ function AddPost({ isOpen, onClose }) {
     const [caption, setCaption] = useState('');
     const [progress, setProgress] = useState(0);
     const [image, setImage] = useState(null);
-    const [showSecondModal, setShowSecondModal] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleNext = () => {
-        setShowSecondModal(true)
-    }
-
-    const handleClose = () => {
-        setShowSecondModal(false);
-        onClose();
-    }
 
     const inputRef = useRef();
 
@@ -58,6 +51,9 @@ function AddPost({ isOpen, onClose }) {
     }
 
     const handleUpload = () => {
+        if (isLoading) return;
+        setIsLoading(true); 
+
         const storage = getStorage();
         const storageRef = ref(storage, `images/${image.name}`);
         console.log(storageRef);
@@ -143,7 +139,9 @@ function AddPost({ isOpen, onClose }) {
                                         <Flex justify='space-between' p='0.2rem 0.5rem'>
                                             <Icon as={BsArrowLeft} boxSize='1.7rem' cursor='pointer' onClick={handleModalClose} />
                                             <Text textAlign='center' fontSize='1rem'>Create new post</Text>
-                                            <Text textAlign='right' fontSize='0.9rem' color='blue.300' _hover={{ color: "white" }} cursor='pointer' onClick={() => { handleUpload(); onClose();}} >Share</Text>
+                                            {
+                                                isLoading ? <Spinner /> : <Text textAlign='right' fontSize='0.9rem' color='blue.300' _hover={{ color: "white" }} cursor='pointer' onClick={() => { handleUpload(); onClose(); }} >Share</Text>
+                                            }
                                         </Flex>
                                     </ModalHeader>
 
@@ -159,7 +157,7 @@ function AddPost({ isOpen, onClose }) {
                                                                     <Avatar src={currentUser.photoURL} size='sm' />
                                                                     <Text fontWeight='600'>{currentUser.displayName}</Text>
                                                                 </HStack>
-                                                                <Textarea p='0 1rem' variant='ghost' bg='transparent' size='md' placeholder='Write a caption...' w='100%' h='50%' value={caption} onChange={(e)=>{setCaption(e.target.value)}} />
+                                                                <Textarea p='0 1rem' variant='ghost' bg='transparent' size='md' placeholder='Write a caption...' w='100%' h='50%' value={caption} onChange={(e) => { setCaption(e.target.value) }} />
                                                             </Box>
                                                         </Flex>
                                                     ) : (

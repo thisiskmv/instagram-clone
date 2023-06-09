@@ -38,7 +38,7 @@ function Message({ messages }) {
       } `}
     >
       <div className="messageInfo">
-        <img
+        <Image
           src={
             messages.senderId === currentUser.uid
               ? currentUser.photoURL
@@ -46,15 +46,15 @@ function Message({ messages }) {
           }
           alt="profile"
         />
-        {console.log("time",messages.date.seconds)}
-        {/* <span>{messages.date.seconds}</span> */}
-        <span>{just === 0 ? "Just Now" : just + "m ago"}</span>
+        {/* {console.log("time",messages.date.seconds)} */}
+        {/* <Text as='span' fontSize='0.8rem' fontWeight='600'>{just === 0 ? "Just Now" : just + "m ago"}</Text> */}
       </div>
       <div className="messageContent">
         <p>{messages.text}</p>
         {messages.img && <img src={messages.img} alt="" />}
       </div>
     </div>
+
   );
 }
 

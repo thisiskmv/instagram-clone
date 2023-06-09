@@ -164,7 +164,7 @@ function RightSidebar() {
 
                         <Box>
                           <Text mb={-0.5}>{chat[1].userInfo.displayName}</Text>
-                          <Text fontSize={13}>{chat[1].lastMessage?.text}</Text>
+                          <Text fontSize={13} fontWeight='500'>{chat[1].lastMessage?.text}</Text>
                         </Box>
                       </HStack>
                     ))}

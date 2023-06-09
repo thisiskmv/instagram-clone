@@ -8,12 +8,13 @@ import 'firebase/compat/auth';
 import 'firebase/compat/storage';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDLHfV-jjhT1lOld__oJuG5HUdaj12IFMI",
-  authDomain: "newchat-92cb9.firebaseapp.com",
-  projectId: "newchat-92cb9",
-  storageBucket: "newchat-92cb9.appspot.com",
-  messagingSenderId: "211748575230",
-  appId: "1:211748575230:web:379d9ec626d692482ed2af"
+  apiKey: "AIzaSyBALHlnSBbJOuYn7wLuxU8sEuEPl2mmfTI",
+  authDomain: "mychat-ffe05.firebaseapp.com",
+  projectId: "mychat-ffe05",
+  storageBucket: "mychat-ffe05.appspot.com",
+  messagingSenderId: "465212255587",
+  appId: "1:465212255587:web:322eca8268caa9d8ba3756",
+  measurementId: "G-F9RQR8JM38"
 };
 
 export const app = firebase.initializeApp(firebaseConfig);

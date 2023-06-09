@@ -70,10 +70,11 @@
 }
 
 .messageContent > p{
-  background-color: transparent;
-  padding: 0.8rem 1rem;
+  background-color: rgb(38,38,38);
+  padding: 0.5rem 0.8rem;
+  font-weight: 400;
   border-radius: 5rem;
-  border: 1px solid rgba(117, 114, 114, 0.842);
+  /* border: 1px solid rgba(117, 114, 114, 0.842); */
 }
 
 .messageContent > img{
@@ -89,8 +90,9 @@
 }
 
 .owner p{
-  background-color: rgb(38,38,38);
+  background-color: rgb(55,151,240);
   color: white;
+  font-weight: 400;
   border: none;
   max-width: max-content;
 }
@@ -110,7 +112,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.4rem 1.2rem;
+  padding: 0.4rem 1.2rem 0.4rem 0rem;
   border: 1px solid rgba(117, 114, 114, 0.842);
   border-radius: 1.8rem;
 }
