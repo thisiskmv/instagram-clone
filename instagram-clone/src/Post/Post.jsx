@@ -125,11 +125,8 @@ function Post({ post, postId, isLoading }) {
     return (
 
         <>
-
-
             {
                 isLoading ? (
-
                     <Box w='63%' m='auto' p='1rem 0' borderBottom='0.1px solid rgb(54,54,54)' key={postId} >
 
                         <Flex p='0.7rem 0.3rem'>
