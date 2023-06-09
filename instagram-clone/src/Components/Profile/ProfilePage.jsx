@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AspectRatio, Avatar, Box, Button, Flex, Grid, GridItem, HStack, Heading, Icon, Image, Text, VStack, useDisclosure } from '@chakra-ui/react'
+import { AspectRatio, Avatar, Box, Button, Flex, Grid, GridItem, HStack, Heading, Icon, Image, Skeleton, Text, VStack, useDisclosure } from '@chakra-ui/react'
 import { AuthContext } from '../../context/AuthContext';
 import LeftSidebar from '../LeftSidebar';
 import settings from '../../Images/settings.svg'
@@ -45,9 +45,11 @@ function ProfilePage(props) {
                         .sort((a, b) => b.timestamp - a.timestamp); // Replace 'timestamp' with the actual property to sort by
 
                     setAllPost(sortedPosts);
+                    setIsLoading(true)
                 } catch (error) {
                     // Handle error
                     console.error('Error fetching posts:', error);
+                    // setIsLoading(false)
                 }
             }
         };
@@ -110,8 +112,6 @@ function ProfilePage(props) {
 
                             {
                                 isLoading ? (
-                                    <Heading color='black'>Please wait...</Heading>
-                                ) : (
                                     <Grid gridTemplateColumns='repeat(3, 1fr)' gap={1}>
                                         {allPost.map((post) => (
                                             <GridItem key={post.id}>
@@ -121,10 +121,14 @@ function ProfilePage(props) {
                                             </GridItem>
                                         ))}
                                     </Grid>
+                                ) : (
+                                    <Grid gridTemplateColumns='repeat(3, 1fr)' gap={1}>
+                                        <Skeleton height='19.3rem' />
+                                        <Skeleton height='19.3rem' />
+                                        <Skeleton height='19.3rem' />
+                                    </Grid>
                                 )
                             }
-
-
                         </Box>
                     </Flex>
                 </Box>

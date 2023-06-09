@@ -7,11 +7,12 @@ import Signup from '../Login SIGNUP/Login';
 import PrivateRoute from '../context/PrivateRoute';
 import Chat from '../Components/Chat';
 import ProfilePage from '../Components/Profile/ProfilePage';
+import Feed from '../Components/Feed';
 
 function AllRoutes(props) {
     return (     
         <Routes>
-        <Route path='/' element={<PrivateRoute><Post/></PrivateRoute>}/>
+        <Route path='/' element={<PrivateRoute><Feed/></PrivateRoute>}/>
         <Route path="/homedumy" element={<PrivateRoute><HomeDummy/></PrivateRoute>} />
         <Route path='/signup' element={<Login/>}/>
         <Route path='/login' element={<Signup/>}/>
