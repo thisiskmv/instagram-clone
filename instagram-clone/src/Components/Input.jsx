@@ -36,7 +36,6 @@ function Input(props) {
       const uploadTask = uploadBytesResumable(storageRef, img);
       uploadTask.on(
         (error) => {
-          //   setError(true)
           console.log(error);
         },
         () => {
@@ -44,7 +43,7 @@ function Input(props) {
             await updateDoc(doc(db, "chats", data.chatId), {
               messages: arrayUnion({
                 id: uuid(),
-                text,
+                // text,
                 senderId: currentUser.uid,
                 date: Timestamp.now(),
                 img: downloadURL,
@@ -78,9 +77,6 @@ function Input(props) {
     setText("");
     setImg(null);
   };
-
-
-
   return (
     <div className="inputdiv">
 
@@ -96,8 +92,7 @@ function Input(props) {
             setText(e.target.value);
           }}
         />
-
-        {text ? 
+        {text || img ? 
           <Button p='0.7rem 0' size='xs' colorScheme="none" color='blue.300' _hover={{ color: "white", fontWeight: '600' }} onClick={handleSend}><Text fontSize='0.9rem'>Send</Text></Button> 
           :
           <div className="send">
@@ -106,7 +101,7 @@ function Input(props) {
             <input type="file" ref={inputRef} hidden onChange={handleChange} id="fileimg" />
             <Icon as={AiOutlineHeart} fontSize="1.7rem" cursor="pointer" />
           </div>
-        }
+          }
       </div>
     </div>
   );

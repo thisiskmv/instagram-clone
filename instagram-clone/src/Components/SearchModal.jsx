@@ -45,7 +45,7 @@ function SearchModal({ isOpen, onClose }) {
   const { dispatch } = useContext(ChatContext);
   const [username, setUserName] = useState("");
   const [user, setUser] = useState(null);
-  const [err, setErr] = useState(false);
+  const [err, setErr] = useState(true);
   const [chats, setChats] = useState([]);
   
   const config = {
@@ -58,16 +58,26 @@ function SearchModal({ isOpen, onClose }) {
       collection(db, "users"),
       where("displayName", "==", username)
     );
+    
     try {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         setUser(doc.data());
       });
+      if(user!==username){
+        setErr(false)
+        console.log(err,"false")
+      }else{
+        setErr(true)
+        console.log(err,"true")
+      }
     } catch (error) {
       setErr(true);
+   
     }
   };
 
+console.log("users",user)
   const handleKey = (e) => {
     e.code === "Enter" && handleSearch();
   };
@@ -102,7 +112,7 @@ function SearchModal({ isOpen, onClose }) {
         });
       }
     } catch (error) {}
-    setUser(null);
+    // setUser(null);
     setUserName("");
     onClose()
   };
@@ -145,7 +155,7 @@ function SearchModal({ isOpen, onClose }) {
 
           <Center>
             <Box w="100%" p="1rem 0" borderTop="0.1px solid rgba(190, 190, 190, 0.40)">
-              {user === "" && <span>User not found!</span>}
+             
               {user ? (
                 <HStack
                   spacing={3}
@@ -165,10 +175,14 @@ function SearchModal({ isOpen, onClose }) {
                   </Box>
                 </HStack>
               ) : (
+              <>
+              {  err ? "" :  <Center><Text color="red" fontWeight={"500"}>User not found!</Text></Center>  }
                 <Box>
-                  <Center><Heading mt="1rem"><RiTelegramLine color="grey" fontSize={"4rem"} /></Heading></Center>
-                <Text fontSize={"1.5rem"}  textAlign={"center"}>Search here for chat</Text>
-                </Box>
+                <Center><Heading mt="1rem"><RiTelegramLine color="grey" fontSize={"4rem"} /></Heading></Center>
+              <Text fontSize={"1.5rem"}  textAlign={"center"}>Search here for chat</Text>
+              </Box>
+              </>
+                
               )}
             </Box>
           </Center>

@@ -22,21 +22,20 @@ function Message({ messages }) {
     ref.current?.scrollIntoView({
       behaviour: "smooth",
     });
-  }, [messages]);
+  }, [messages.img,messages.text]);
   console.log("meaashahe", messages);
 
-  useEffect(() => {
-    setInterval(() => {
-      setJust((prev) => prev + 1);
-    }, 60000);
-  }, []);
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     setJust((prev) => prev + 1);
+  //   }, 60000);
+  // }, []);
   return (
     <div
       ref={ref}
       className={`message  ${
-        messages.senderId === currentUser.uid && "owner"
-      } `}
-    >
+      messages.senderId === currentUser.uid && "owner"}`}
+      >
       <div className="messageInfo">
         <Image
           src={
@@ -46,15 +45,16 @@ function Message({ messages }) {
           }
           alt="profile"
         />
+
         {/* {console.log("time",messages.date.seconds)} */}
         {/* <Text as='span' fontSize='0.8rem' fontWeight='600'>{just === 0 ? "Just Now" : just + "m ago"}</Text> */}
       </div>
+      <p style={{}}>{messages.text}</p>
       <div className="messageContent">
-        <p>{messages.text}</p>
+        
         {messages.img && <img src={messages.img} alt="" />}
       </div>
     </div>
-
   );
 }
 
