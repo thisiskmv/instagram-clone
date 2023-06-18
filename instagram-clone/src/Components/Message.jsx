@@ -13,6 +13,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
+
 function Message({ messages }) {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
@@ -22,8 +23,10 @@ function Message({ messages }) {
     ref.current?.scrollIntoView({
       behaviour: "smooth",
     });
-  }, [messages]);
+  }, []);
   console.log("meaashahe", messages);
+
+  // console.log("data",data)
 
   useEffect(() => {
     setInterval(() => {
