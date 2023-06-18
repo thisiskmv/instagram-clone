@@ -10,6 +10,7 @@ import { ChatContext } from '../context/ChatContext';
 import SearchModal from './SearchModal';
 function Chat() {
     const { data } = useContext(ChatContext);
+    console.log(data)
     const[flag,setFlag]=useState(false)
     useEffect(() => {
       if (data.chatId === "null") {
