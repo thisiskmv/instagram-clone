@@ -43,7 +43,7 @@ function Post({ post, postId, isLoading }) {
             setLikes(snapshot.docs)
         ), [postId]);
 
-    console.log(likes)
+    // console.log(likes)
 
     useEffect(() =>
         setHasLiked(
@@ -53,7 +53,7 @@ function Post({ post, postId, isLoading }) {
 
     const deletePost = (id) => {
         deleteDoc(doc(db, "posts", id));
-        console.log(id)
+        // console.log(id)
     };
 
 
@@ -94,7 +94,7 @@ function Post({ post, postId, isLoading }) {
         setnewComment("");
     };
 
-    console.log("sec", showComments)
+    // console.log("sec", showComments)
 
     console.log(isLoading)
 
@@ -125,99 +125,83 @@ function Post({ post, postId, isLoading }) {
     return (
 
         <>
-            {
-                isLoading ? (
-                    <Box w='63%' m='auto' p='1rem 0' borderBottom='0.1px solid rgb(54,54,54)' key={postId} >
+            <Box w='63%' m='auto' p='1rem 0' borderBottom='0.1px solid rgb(54,54,54)' key={post.post.id} >
 
-                        <Flex p='0.7rem 0.3rem'>
-                            <Flex flex='1' gap='3' alignItems='center' flexWrap='wrap'>
-                                <Avatar src={post.post.photoURL} size='sm' name='woman' />
-                                <Box>
-                                    <Heading size='xs'>{post.post.username}</Heading>
-                                    <Text fontSize='xs'>New Delhi</Text>
-                                </Box>
-                            </Flex>
-                            <Spacer />
-                            <Modal isOpen={isOpen} onClose={onClose}>
-                                <ModalContent ml="7.5rem" w="10%" borderRadius={"1rem"}>
-                                    <ModalHeader p="0"></ModalHeader>
-                                    <ModalBody p="0">
-                                        {post.post.userId === currentUser.uid && (
-                                            <Button onClick={() => { deletePost(postId) }} _hover={{ bg: "red", color: "white" }} w="100%">Delete</Button>
-                                        )}
-
-
-                                    </ModalBody>
-                                    <ModalFooter p="0"></ModalFooter>
-                                </ModalContent>
-                            </Modal>
-                            <Flex align='center'>
-                                <Icon as={BsThreeDots} onClick={onOpen} boxSize={5} cursor='pointer' />
-                            </Flex>
-                        </Flex>
-                        <AspectRatio ratio={3 / 3.8}>
-                            <Image src={post.post.imageUrl} w='100px' borderRadius="5px" objectFit='cover' />
-                        </AspectRatio>
-
-                        <Flex p='0.7rem 0rem 0rem 0rem'>
-                            <Box>
-                                {hasLiked ? (
-                                    <Icon as={AiFillHeart} boxSize={7} color='#f56565' cursor='pointer' onClick={() => { likePost(postId) }} />
-                                ) : (
-                                    <Icon as={AiOutlineHeart} boxSize={7} cursor='pointer' onClick={() => { likePost(postId) }} />
+                <Flex p='0.7rem 0.3rem'>
+                    <Flex flex='1' gap='3' alignItems='center' flexWrap='wrap'>
+                        <Avatar src={post.post.photoURL} size='sm' name='woman' />
+                        <Box>
+                            <Heading size='xs'>{post.post.username}</Heading>
+                            <Text fontSize='xs'>New Delhi</Text>
+                        </Box>
+                    </Flex>
+                    <Spacer />
+                    <Modal isOpen={isOpen} onClose={onClose}>
+                        <ModalContent ml="7.5rem" w="10%" borderRadius={"1rem"}>
+                            <ModalHeader p="0"></ModalHeader>
+                            <ModalBody p="0">
+                                {post.post.userId === currentUser.uid && (
+                                    <Button onClick={() => { deletePost(postId) }} _hover={{ bg: "red", color: "white" }} w="100%">Delete</Button>
                                 )}
+                            </ModalBody>
+                            <ModalFooter p="0"></ModalFooter>
+                        </ModalContent>
+                    </Modal>
+                    <Flex align='center'>
+                        <Icon as={BsThreeDots} onClick={onOpen} boxSize={5} cursor='pointer' />
+                    </Flex>
+                </Flex>
+                <AspectRatio ratio={3 / 3.8}>
+                    <Image loading="lazy" src={post.post.imageUrl} w='100px' borderRadius="5px" objectFit='cover' />
+                </AspectRatio>
 
-                                <Icon as={RiChat3Line} cursor='pointer' boxSize='1.7rem' m="0 0.9rem" />
-                                <Icon as={FiSend} cursor='pointer' boxSize={6} />
-                            </Box>
-                            <Spacer />
-                            <Box>
-                                <Icon as={BsBookmark} cursor='pointer' boxSize={6} />
-                            </Box>
-                        </Flex>
-                        <Box>
-                            <Text fontSize='sm' ml='0.2rem'>{likes.length} likes</Text>
-                        </Box>
+                <Flex p='0.7rem 0rem 0rem 0rem'>
+                    <Box>
+                        {hasLiked ? (
+                            <Icon as={AiFillHeart} boxSize={7} color='#f56565' cursor='pointer' onClick={() => { likePost(postId) }} />
+                        ) : (
+                            <Icon as={AiOutlineHeart} boxSize={7} cursor='pointer' onClick={() => { likePost(postId) }} />
+                        )}
 
-                        <Flex>
-                            <Text fontSize='sm' ml='0.2rem'><b>{post.post.username}</b></Text>
-                            <Text fontSize='sm' ml='0.5rem'>{post.post.caption}</Text>
-                        </Flex>
-
-                        <Box>
-                            <Text fontSize='sm' fontWeight='200' ml='0.2rem'>View all {showComments.length} comments</Text>
-                        </Box>
-
-                        <Box>
-                            {
-                                showComments.map((comment) => {
-                                    return <>
-                                        <Text fontSize='xs' ml='0.2rem'>
-                                            <b>{comment.data().username}</b> &nbsp; {comment.data().comment}
-                                        </Text>
-                                    </>
-                                })
-                            }
-                        </Box>
-
-                        <Flex>
-                            <Input type='text' fontSize='sm' variant='unstyled' p='0.5rem' placeholder='Add a comment…' value={newComment} onChange={(e) => { setnewComment(e.target.value) }} />
-                            {newComment && <Button fontSize='0.9rem' p='0' size='sm' colorScheme="none" color='blue.300' _hover={{ color: "white" }} onClick={() => { postComment(postId) }} disabled={!newComment} >Post</Button>}
-                        </Flex>
-
+                        <Icon as={RiChat3Line} cursor='pointer' boxSize='1.7rem' m="0 0.9rem" />
+                        <Icon as={FiSend} cursor='pointer' boxSize={6} />
                     </Box>
-                ) : (
-
-                    <Box padding='6' boxShadow='lg' bg='whiteAlpha.800' w='63%' m='auto'>
-                        <SkeletonCircle size='10' />
-                        <SkeletonText mt='4' noOfLines={2} spacing='4' skeletonHeight='2' />
-                        <Skeleton height='500px' />
+                    <Spacer />
+                    <Box>
+                        <Icon as={BsBookmark} cursor='pointer' boxSize={6} />
                     </Box>
+                </Flex>
+                <Box>
+                    <Text fontSize='sm' ml='0.2rem'>{likes.length} likes</Text>
+                </Box>
 
-                )
+                <Flex>
+                    <Text fontSize='sm' ml='0.2rem'><b>{post.post.username}</b></Text>
+                    <Text fontSize='sm' ml='0.5rem'>{post.post.caption}</Text>
+                </Flex>
 
-            }
+                <Box>
+                    <Text fontSize='sm' fontWeight='200' ml='0.2rem'>View all {showComments.length} comments</Text>
+                </Box>
 
+                <Box>
+                    {
+                        showComments.map((comment) => {
+                            return <>
+                                <Text fontSize='xs' ml='0.2rem'>
+                                    <b>{comment.data().username}</b> &nbsp; {comment.data().comment}
+                                </Text>
+                            </>
+                        })
+                    }
+                </Box>
+
+                <Flex>
+                    <Input type='text' fontSize='sm' variant='unstyled' p='0.5rem' placeholder='Add a comment…' value={newComment} onChange={(e) => { setnewComment(e.target.value) }} />
+                    {newComment && <Button fontSize='0.9rem' p='0' size='sm' colorScheme="none" color='blue.300' _hover={{ color: "white" }} onClick={() => { postComment(postId) }} disabled={!newComment} >Post</Button>}
+                </Flex>
+
+            </Box>
         </>
     );
 }

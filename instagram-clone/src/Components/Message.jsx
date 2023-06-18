@@ -13,6 +13,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
+
 function Message({ messages }) {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
@@ -25,11 +26,6 @@ function Message({ messages }) {
   }, [messages.img,messages.text]);
   console.log("meaashahe", messages);
 
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     setJust((prev) => prev + 1);
-  //   }, 60000);
-  // }, []);
   return (
     <div
       ref={ref}

@@ -123,9 +123,9 @@ function ProfilePage(props) {
                                     </Grid>
                                 ) : (
                                     <Grid gridTemplateColumns='repeat(3, 1fr)' gap={1}>
-                                        <Skeleton height='19.3rem' />
-                                        <Skeleton height='19.3rem' />
-                                        <Skeleton height='19.3rem' />
+                                        <Skeleton height='19.3rem' startColor='rgb(18,18,18)' endColor='rgb(34,34,34)' />
+                                        <Skeleton height='19.3rem' startColor='rgb(18,18,18)' endColor='rgb(34,34,34)' />
+                                        <Skeleton height='19.3rem' startColor='rgb(18,18,18)' endColor='rgb(34,34,34)' />
                                     </Grid>
                                 )
                             }

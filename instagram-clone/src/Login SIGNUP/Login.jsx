@@ -21,6 +21,7 @@ import {
 function Signup(props) {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
   const [inputValue, setInputValue] = useState({
     email: "",
     password: "",
@@ -40,10 +41,12 @@ function Signup(props) {
     let password = inputValue.password;
 
     try {
+      setIsLoading(true);
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/");
     } catch (error) {
       setError(true);
+      setIsLoading(false);
       console.log(error);
     }
   };
@@ -55,7 +58,7 @@ function Signup(props) {
     <form>
       <Flex bg="rgb(250,250,250)">
         <Box w="50%" ml="17rem">
-          <Image src="https://media.gcflearnfree.org/content/633d944b3823fb02e84dce55_10_05_2022/Screen%20Shot%202022-10-10%20at%202.28.19%20PM.png" />
+          <Image loading="lazy" src="https://media.gcflearnfree.org/content/633d944b3823fb02e84dce55_10_05_2022/Screen%20Shot%202022-10-10%20at%202.28.19%20PM.png" />
         </Box>
         <Box w="35%" mr="15rem" mt="2rem" padding={"1rem"}>
           <Box border="1px solid rgb(219,219,219)" padding="1rem">
@@ -93,6 +96,8 @@ function Signup(props) {
                     size="sm"
                     color="grey"
                     variant={"ghost"}
+                    colorScheme="none"
+                    _hover={{ color: 'blue.400' }}
                     onClick={handleClick}
                   >
                     {show ? "Hide" : "Show"}
@@ -103,14 +108,25 @@ function Signup(props) {
 
             <Center>
               <Box padding={"0.3rem"}>
-                <Button
-                  onClick={sendData}
-                  width="300px"
-                  bg="rgb(76,181,249)"
-                  _hover={{ bg: "rgb(0,149,246)" }}
-                >
-                  Login
-                </Button>
+                {
+                  isLoading ? (<Button
+                    isLoading
+                    loadingText='Loading'
+                    width="300px"
+                    spinnerPlacement='start'
+                    bg="rgb(76,181,249)"
+                    _hover={{ bg: "rgb(0,149,246)" }}
+                  >
+                    Submit
+                  </Button>) : (<Button
+                    onClick={sendData}
+                    width="300px"
+                    bg="rgb(76,181,249)"
+                    _hover={{ bg: "rgb(0,149,246)" }}
+                  >
+                    Login
+                  </Button>)
+                }
               </Box>
             </Center>
 
@@ -132,7 +148,11 @@ function Signup(props) {
               </Text>
             </Center>
 
-            <Center>{error && <h3>something went wrong</h3>}</Center>
+            <Center>
+              <Box p='1.5rem'>
+                {error && <Text color='red' fontSize='0.8rem' fontWeight='500'>something went wrong</Text>}
+              </Box>
+            </Center>
             <Center>
               <Text mt="0.8rem" color="black" fontSize={"0.7rem"}>
                 Forgot password?
