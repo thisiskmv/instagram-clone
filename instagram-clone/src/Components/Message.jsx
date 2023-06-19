@@ -45,9 +45,8 @@ function Message({ messages }) {
         {/* {console.log("time",messages.date.seconds)} */}
         {/* <Text as='span' fontSize='0.8rem' fontWeight='600'>{just === 0 ? "Just Now" : just + "m ago"}</Text> */}
       </div>
-      <p style={{}}>{messages.text}</p>
       <div className="messageContent">
-        
+        {messages.text && <p>{messages.text}</p>}
         {messages.img && <img src={messages.img} alt="" />}
       </div>
     </div>

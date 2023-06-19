@@ -28,6 +28,16 @@ function Messages(props) {
       height="calc(100% - 10.1rem)"
       overflow="scroll"
       overflowX="hidden"
+      sx={{
+        '&::-webkit-scrollbar': {
+          // width: '16px',
+          // borderRadius: '8px',
+          backgroundColor: "rgb(38,38,38)",
+        },
+        '&::-webkit-scrollbar-thumb': {
+          backgroundColor: `rgb(115,115,115)`,
+        },
+      }}
     >
       {messages.map((elm) => {
         return <Message messages={elm} key={elm.id} />;

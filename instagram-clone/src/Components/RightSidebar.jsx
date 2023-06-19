@@ -42,58 +42,6 @@ function RightSidebar() {
   const [err, setErr] = useState(false);
   const [chats, setChats] = useState([]);
 
-  // const handleSearch = async () => {
-  //   const q = query(
-  //     collection(db, "users"),
-  //     where("displayName", "==", username)
-  //   );
-  //   try {
-  //     const querySnapshot = await getDocs(q);
-  //     querySnapshot.forEach((doc) => {
-  //       setUser(doc.data());
-  //     });
-  //   } catch (error) {
-  //     setErr(true);
-  //   }
-  // };
-
-  // const handleKey = (e) => {
-  //   e.code === "Enter" && handleSearch();
-  // };
-  // const handleSelect = async () => {
-  //   const combinedId =
-  //     currentUser.uid > user.uid
-  //       ? currentUser.uid + user.uid
-  //       : user.uid + currentUser.uid;
-
-  //   try {
-  //     const res = await getDoc(doc(db, "chats", combinedId));
-
-  //     if (!res.exists()) {
-  //       await setDoc(doc(db, "chats", combinedId), { messages: [] });
-
-  //       // create user chats
-  //       await updateDoc(doc(db, "userChats", currentUser.uid), {
-  //         [combinedId + ".userInfo"]: {
-  //           uid: user.uid,
-  //           displayName: user.displayName,
-  //           photoURL: user.photoURL,
-  //         },
-  //         [combinedId + ".date"]: serverTimestamp(),
-  //       });
-  //       await updateDoc(doc(db, "userChats", user.uid), {
-  //         [combinedId + ".userInfo"]: {
-  //           uid: currentUser.uid,
-  //           displayName: currentUser.displayName,
-  //           photoURL: currentUser.photoURL,
-  //         },
-  //         [combinedId + ".date"]: serverTimestamp(),
-  //       });
-  //     }
-  //   } catch (error) {}
-  //   setUser(null);
-  //   setUserName("");
-  // };
 
   useEffect(() => {
     const getChats = () => {
@@ -145,7 +93,7 @@ function RightSidebar() {
             />
             <TabPanels>
               <TabPanel p="0" w="100%">
-                
+
                 <Box borderTop="0.1px solid rgb(54,54,54)">
                   {Object.entries(chats)
                     ?.sort((a, b) => b[1].date - a[1].date)
@@ -156,7 +104,7 @@ function RightSidebar() {
                         p="0.4rem 1rem"
                         cursor="pointer"
                         _hover={{ bg: "rgb(38,38,38)" }}
-                        onClick={() => chatSelect(chat[1].userInfo) }
+                        onClick={() => chatSelect(chat[1].userInfo)}
                       >
                         <Box>
                           <Avatar size="lg" src={chat[1].userInfo.photoURL} />
@@ -179,5 +127,7 @@ function RightSidebar() {
       </Box>
     </>
   );
+
 }
+
 export default RightSidebar;
