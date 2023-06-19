@@ -83,7 +83,7 @@ function ProfilePage(props) {
                                 </Flex>
 
                                 <Flex mt='1rem' justify='space-between' w='90%'>
-                                    <Text><Text as='span' fontWeight='600'>14</Text> posts</Text>
+                                    <Text><Text as='span' fontWeight='600'>{allPost.length}</Text> posts</Text>
                                     <Text><Text as='span' fontWeight='600'>563</Text> followers</Text>
                                     <Text><Text as='span' fontWeight='600'>202</Text> following</Text>
                                 </Flex>

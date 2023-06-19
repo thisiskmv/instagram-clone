@@ -26,6 +26,7 @@ import { FiSend } from "react-icons/fi";
 import { db } from "../firebase/firebase";
 import { collection, onSnapshot, orderBy, query, deleteDoc, doc, serverTimestamp, addDoc, setDoc } from "firebase/firestore";
 import { AuthContext } from "../context/AuthContext";
+import CommentsModal from "../Components/CommentsModal";
 
 
 
@@ -36,6 +37,11 @@ function Post({ post, postId, isLoading }) {
     const [showComments, setShowComments] = useState([]);
     const [likes, setLikes] = useState([]);
     const [hasLiked, setHasLiked] = useState([]);
+    const [isCommentModalOpen, setCommentModalOpen] = useState(false);
+
+    const toggleCommentModal = () => {
+        setCommentModalOpen(!isCommentModalOpen);
+      };
 
 
     useEffect(() =>
@@ -86,6 +92,7 @@ function Post({ post, postId, isLoading }) {
         if (newComment !== "") {
             await addDoc(collection(db, "posts", id, "comments"), {
                 username: currentUser.displayName,
+                profilePhoto: currentUser.photoURL,
                 comment: newComment,
                 timestamp: serverTimestamp(),
             });
@@ -94,7 +101,7 @@ function Post({ post, postId, isLoading }) {
         setnewComment("");
     };
 
-    // console.log("sec", showComments)
+    console.log("sec", showComments)
 
     console.log(isLoading)
 
@@ -163,7 +170,10 @@ function Post({ post, postId, isLoading }) {
                             <Icon as={AiOutlineHeart} boxSize={7} cursor='pointer' onClick={() => { likePost(postId) }} />
                         )}
 
-                        <Icon as={RiChat3Line} cursor='pointer' boxSize='1.7rem' m="0 0.9rem" />
+                        <Icon as={RiChat3Line} cursor='pointer' boxSize='1.7rem' m="0 0.9rem"  onClick={toggleCommentModal} />
+
+                        
+
                         <Icon as={FiSend} cursor='pointer' boxSize={6} />
                     </Box>
                     <Spacer />
@@ -184,12 +194,13 @@ function Post({ post, postId, isLoading }) {
                     <Text fontSize='sm' fontWeight='200' ml='0.2rem'>View all {showComments.length} comments</Text>
                 </Box>
 
+                    <CommentsModal post={post.post} postId={postId} likes={likes} commentData={showComments} newComment={newComment} setnewComment={setnewComment} postComment={postComment} isOpen={isCommentModalOpen} onClose={toggleCommentModal}/>
                 <Box>
                     {
-                        showComments.map((comment) => {
+                        showComments.slice(0, 2).map((comment) => {
                             return <>
                                 <Text fontSize='xs' ml='0.2rem'>
-                                    <b>{comment.data().username}</b> &nbsp; {comment.data().comment}
+                                    <b>{comment.data().username}</b>  {comment.data().comment}
                                 </Text>
                             </>
                         })

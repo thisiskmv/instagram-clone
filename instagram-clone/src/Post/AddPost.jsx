@@ -1,5 +1,8 @@
-import { AspectRatio, Avatar, Box, Button, Center, Flex, HStack, Heading, Icon, Image, Input, Progress, Stack, Text, Textarea, useDisclosure } from '@chakra-ui/react';
+import { AspectRatio, Avatar, Box, Button, Center, Flex, HStack, Heading, Icon, Image, Input, Progress, Spacer, Stack, Text, Textarea, useDisclosure } from '@chakra-ui/react';
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { GrEmoji } from "react-icons/gr";
+import { TfiLocationPin } from 'react-icons/tfi'
+import { IoIosArrowDown } from "react-icons/io";
 import { storage, db } from '../firebase/firebase';
 import { ref, getDownloadURL, uploadBytesResumable, getMetadata } from "firebase/storage";
 import firebase from 'firebase/compat/app';
@@ -26,7 +29,6 @@ import { Spinner } from '@chakra-ui/react';
 function AddPost({ isOpen, onClose }) {
     const { currentUser } = useContext(AuthContext);
     const [caption, setCaption] = useState('');
-    const [progress, setProgress] = useState(0);
     const [image, setImage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -52,7 +54,7 @@ function AddPost({ isOpen, onClose }) {
 
     const handleUpload = () => {
         if (isLoading) return;
-        setIsLoading(true); 
+        setIsLoading(true);
 
         const storage = getStorage();
         const storageRef = ref(storage, `images/${image.name}`);
@@ -61,10 +63,7 @@ function AddPost({ isOpen, onClose }) {
         const uploadTask = uploadBytesResumable(storageRef, image);
 
         uploadTask.on('state_changed', (snapshot) => {
-            const progress = Math.round(
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            );
-            setProgress(progress);
+            
         }, (error) => {
             console.log(error);
             alert(error.message);
@@ -158,6 +157,30 @@ function AddPost({ isOpen, onClose }) {
                                                                     <Text fontWeight='600'>{currentUser.displayName}</Text>
                                                                 </HStack>
                                                                 <Textarea p='0 1rem' variant='ghost' bg='transparent' size='md' placeholder='Write a caption...' w='100%' h='50%' value={caption} onChange={(e) => { setCaption(e.target.value) }} />
+                                                                <Box lineHeight='2.3rem' p='0 1rem'>
+                                                                    <Flex align='center'>
+                                                                        <Icon as={GrEmoji}
+                                                                            color='darkgray' fontSize="1.5rem" cursor="pointer"
+                                                                        />
+                                                                        <Spacer />
+                                                                        <Text color='gray' fontSize='0.8rem'>0/2000</Text>
+                                                                    </Flex>
+                                                                    <Flex align='center' >
+                                                                        <Text color='darkgray' fontSize='1rem' cursor='pointer'>Add Location</Text>
+                                                                        <Spacer />
+                                                                        <Icon as={TfiLocationPin} color='gray.200' fontSize='1rem' cursor="pointer" />
+                                                                    </Flex>
+                                                                    <Flex align='center' >
+                                                                        <Text color='white' fontSize='1rem' cursor='pointer'>Accessibility</Text>
+                                                                        <Spacer />
+                                                                        <Icon as={IoIosArrowDown} color='gray.200' fontSize='1rem' cursor="pointer" />
+                                                                    </Flex>
+                                                                    <Flex align='center' >
+                                                                        <Text color='white' fontSize='1rem' cursor='pointer'>Advanced Settings</Text>
+                                                                        <Spacer />
+                                                                        <Icon as={IoIosArrowDown} color='gray.200' fontSize='1rem' cursor="pointer" />
+                                                                    </Flex>
+                                                                </Box>
                                                             </Box>
                                                         </Flex>
                                                     ) : (
