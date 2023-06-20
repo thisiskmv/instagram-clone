@@ -61,13 +61,13 @@ function Feed(props) {
                 <Box w='20%'>
                     <LeftSidebar />
                 </Box>
-                <Box w='60%' >
+                <Box w='55%' >
                     <AddPost />
 
-                    <Box overflow='hidden'>
-                        <div style={{ display: 'flex', translate: `0px 0px`, transition: '1s' }}>
-                            <Stories />
-                        </div>
+                    <Box overflow='hidden' p='0' w='100%'>
+
+                        <Stories />
+
                     </Box>
 
                     {
