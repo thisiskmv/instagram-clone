@@ -21,6 +21,11 @@ import { AuthContext } from "../context/AuthContext";
 
 function RightSidebar() {
   const { currentUser } = useContext(AuthContext);
+  const[flag,setFlag]=useState(true)
+  const[flag2,setFlag2]=useState(true)
+  const[flag3,setFlag3]=useState(true)
+  const[flag4,setFlag4]=useState(true)
+  const[flag5,setFlag5]=useState(true)
 
   return (
     <>
@@ -68,7 +73,9 @@ function RightSidebar() {
               <Spacer />
               <Box>
                 <Text fontSize={"0.8rem"} color="blue.400">
-                  Follow
+                  {
+                    flag ? <Text cursor={"pointer"} onClick={()=>{setFlag(false)}}>Follow</Text>: <Text onClick={()=>{setFlag(true)}} cursor={"pointer"}>Following</Text>
+                  }
                 </Text>
               </Box>
             </HStack>
@@ -88,7 +95,9 @@ function RightSidebar() {
               <Spacer />
               <Box>
                 <Text fontSize={"0.8rem"} color="blue.400">
-                  Follow
+                {
+                    flag2 ? <Text cursor={"pointer"} onClick={()=>{setFlag2(false)}}>Follow</Text>: <Text onClick={()=>{setFlag2(true)}} cursor={"pointer"}>Following</Text>
+                  }
                 </Text>
               </Box>
             </HStack>
@@ -107,7 +116,9 @@ function RightSidebar() {
               <Spacer />
               <Box>
                 <Text fontSize={"0.8rem"} color="blue.400">
-                  Follow
+                {
+                    flag3 ? <Text cursor={"pointer"} onClick={()=>{setFlag3(false)}}>Follow</Text>: <Text onClick={()=>{setFlag3(true)}} cursor={"pointer"}>Following</Text>
+                  }
                 </Text>
               </Box>
             </HStack>
@@ -126,7 +137,9 @@ function RightSidebar() {
               <Spacer />
               <Box>
                 <Text fontSize={"0.8rem"} color="blue.400">
-                  Follow
+                {
+                    flag4 ? <Text cursor={"pointer"} onClick={()=>{setFlag4(false)}}>Follow</Text>: <Text onClick={()=>{setFlag4(true)}} cursor={"pointer"}>Following</Text>
+                  }
                 </Text>
               </Box>
             </HStack>
@@ -145,7 +158,9 @@ function RightSidebar() {
               <Spacer />
               <Box>
                 <Text fontSize={"0.8rem"} color="blue.400">
-                  Follow
+                {
+                    flag5 ? <Text cursor={"pointer"} onClick={()=>{setFlag5(false)}}>Follow</Text>: <Text onClick={()=>{setFlag5(true)}} cursor={"pointer"}>Following</Text>
+                  }
                 </Text>
               </Box>
             </HStack>

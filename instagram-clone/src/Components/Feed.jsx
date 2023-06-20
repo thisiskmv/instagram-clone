@@ -65,9 +65,9 @@ function Feed(props) {
                     <AddPost />
 
                     <Box overflow='hidden'>
-                        <div style={{ display: 'flex', translate: `0px 0px`, transition: '1s' }}>
+                        {/* <div style={{ display: 'flex', translate: `0px 0px`, transition: '1s' }}> */}
                             <Stories />
-                        </div>
+                        {/* </div> */}
                     </Box>
 
                     {
