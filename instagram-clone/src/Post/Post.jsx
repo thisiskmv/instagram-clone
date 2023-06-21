@@ -187,7 +187,7 @@ function Post({ post, postId, isLoading }) {
                   <Button
                   m="0.6rem"
                     onClick={() => {
-                      deletePost(postId);
+                      deletePost(postId); onClose();
                     }}
                     color="black"
                     _hover={{ bg: "red", color: "white" }}
@@ -201,7 +201,8 @@ function Post({ post, postId, isLoading }) {
         </Flex>
         <AspectRatio ratio={3 / 3.8}>
           <Image
-            loading="lazy"
+          fallbackSrc="placeholdit.com/200x200"
+          placeholder='img-xxs.jpg'
             src={post.post.imageUrl}
             w="100px"
             borderRadius="5px"

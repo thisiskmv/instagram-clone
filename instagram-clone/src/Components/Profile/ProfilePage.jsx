@@ -21,11 +21,17 @@ import {
     ModalCloseButton,
 } from '@chakra-ui/react'
 import { collection, getDocs, query, where } from 'firebase/firestore';
+import { useSearchParams } from 'react-router-dom';
 
 function ProfilePage(props) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { currentUser } = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(false);
+    const [searchParams,setSearchParams] = useSearchParams();
+
+    useEffect(()=>{
+        setSearchParams(currentUser.displayName)
+    },[])
 
     const [allPost, setAllPost] = useState([]);
     useEffect(() => {
