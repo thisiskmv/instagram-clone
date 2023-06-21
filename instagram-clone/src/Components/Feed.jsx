@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Post from '../Post/Post';
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
@@ -7,11 +7,19 @@ import LeftSidebar from './LeftSidebar';
 import AddPost from '../Post/AddPost';
 import Stories from './Stories';
 import HomeStaticRightBar from './HomeStaticRightBar'
+import { useSearchParams } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 
 function Feed(props) {
+    const {currentUser} = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(false);
     const [posts, setPosts] = useState([]);
+    const [searchParams,setSearchParams] = useSearchParams();
+
+    useEffect(()=>{
+        setSearchParams(currentUser.displayName)
+    },[])
 
     useEffect(() => {
         let unsubscribe;

@@ -13,10 +13,9 @@ function AllRoutes(props) {
     return (     
         <Routes>
         <Route path='/' element={<PrivateRoute><Feed/></PrivateRoute>}/>
-        <Route path="/homedumy" element={<PrivateRoute><HomeDummy/></PrivateRoute>} />
+        <Route path="/messages" element={<PrivateRoute><HomeDummy/></PrivateRoute>} />
         <Route path='/signup' element={<Login/>}/>
         <Route path='/login' element={<Signup/>}/>
-        <Route path="/chat" element={<PrivateRoute><Chat/></PrivateRoute>}/>
         <Route path='/profile' element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
         </Routes>
     );
